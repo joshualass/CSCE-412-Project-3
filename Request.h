@@ -8,7 +8,7 @@ using namespace std;
 struct Request {
     
     string IP_In, IP_out;
-    int num_cycles;
+    int time_to_complete, time_received;
     char type;
     bool complete;
 

@@ -1,0 +1,53 @@
+#include "LoadBalancer.h"
+#include "Webserver.h"
+#include "Request.h"
+#include <vector>
+
+using namespace std;
+
+LoadBalancer::LoadBalancer(int current_time, vector<Webserver> webservers, int n) : 
+    current_time(current_time),
+    webservers(webservers),
+    check_countdown(0),
+    n(n),
+    active_server_count(0)
+{}
+
+void LoadBalancer::addRequest(Request* request) {
+    request_queue.push(request);
+}
+
+void LoadBalancer::simulateClockCycle() {
+    if(check_countdown) {
+        check_countdown--;
+    } else {
+        if(request_queue.size() + 49 < active_server_count * 50) {
+            //when we reach this branch, we need to deactivate a server as we have too many
+            for(auto &webserver : webservers) {
+                if(webserver.active) {
+                    webserver.deactivate();
+                    break;
+                }
+            }
+            check_countdown = n;
+        } else if(request_queue.size() > active_server_count * 80) {
+            for(auto &webserver : webservers) {
+                if(!webserver.active) {
+                    webserver.activate();
+                    break;
+                }
+            }
+            check_countdown = n;
+        }
+    }
+
+    //simulate a clock cycle for each of the web servers 
+    for(auto &webserver : webservers) {
+        //give this server a request if possible
+        if(webserver.current_request == nullptr && webserver.active && !request_queue.empty()) {
+            webserver.processRequest(request_queue.front());
+            request_queue.pop();
+        }
+        webserver.simulateClockCycle();
+    }
+}

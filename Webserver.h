@@ -10,11 +10,12 @@ struct Webserver {
     bool active;
     Request* current_request;
     int time_left; 
-    bool processRequest(Request request);
+    char preferred_job_type;
+    bool processRequest(Request* request);
     bool simulateClockCycle();
     void activate();
     void deactivate();
-    
+
 };
 
 #endif

@@ -9,10 +9,13 @@ using namespace std;
 
 struct LoadBalancer {
 
-    queue<Request> request_queue;
-    int current_time; 
+    int n;
+    queue<Request*> request_queue;
+    int current_time, check_countdown, active_server_count; 
     vector<Webserver> webservers;
-    void addRequest(Request request);
+
+    LoadBalancer(int current_time, vector<Webserver> webservers, int n);
+    void addRequest(Request* request);
     void simulateClockCycle();
 
 };
