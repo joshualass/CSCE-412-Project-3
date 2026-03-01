@@ -5,8 +5,7 @@
 
 using namespace std;
 
-LoadBalancer::LoadBalancer(int current_time, vector<Webserver> webservers, int n) : 
-    current_time(current_time),
+LoadBalancer::LoadBalancer(vector<Webserver> webservers, int n) : 
     webservers(webservers),
     check_countdown(0),
     n(n),
@@ -31,6 +30,7 @@ void LoadBalancer::simulateClockCycle() {
             }
             check_countdown = n;
         } else if(request_queue.size() > active_server_count * 80) {
+            //when we reach this branch, we need to activate a server as the queue is much larger than the active server count
             for(auto &webserver : webservers) {
                 if(!webserver.active) {
                     webserver.activate();

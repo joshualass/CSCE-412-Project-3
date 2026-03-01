@@ -1,9 +1,10 @@
-#include <Request.h>
-
-using namespace std;
-
 #ifndef _WEBSERVER_H_
 #define _WEBSERVER_H_
+
+#include <string>
+using namespace std;
+
+struct Request;
 
 struct Webserver {
 
@@ -11,8 +12,11 @@ struct Webserver {
     Request* current_request;
     int time_left; 
     char preferred_job_type;
+    string IP_address;
+
+    Webserver(string IP_address, char preferred_job_type);
     bool processRequest(Request* request);
-    bool simulateClockCycle();
+    void simulateClockCycle();
     void activate();
     void deactivate();
 
