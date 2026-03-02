@@ -11,6 +11,8 @@ struct Switch {
     vector<char> loadBalancerTypes;
 
     Switch(vector<char> types, int servers_per_loadbalancer);
+    void queueRequest(Request *request);
+    void simulateClockCycle();
 
 };
 

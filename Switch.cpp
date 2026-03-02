@@ -8,3 +8,14 @@ Switch::Switch(vector<char> types, int servers_per_loadbalancer) {
     }
 }
 
+void Switch::queueRequest(Request* request) {
+    for(int i = 0; i < loadBalancerTypes.size(); i++) {
+        if(request->type == loadBalancerTypes[i]) {
+            loadBalancers[i].addRequest(request);
+        }
+    }
+}
+
+void Switch::simulateClockCycle() {
+    for(auto &loadBalancer : loadBalancers) loadBalancer.simulateClockCycle();
+}

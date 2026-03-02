@@ -4,7 +4,10 @@
 #include <string>
 using namespace std;
 
+struct Request;
+
 string generateRandomIP();
 string generateWebserverIP();
+Request* generateRequest(char type);
 
 #endif
