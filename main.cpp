@@ -3,7 +3,7 @@
 #include "Webserver.h"
 #include "HelperFunctions.h"
 #include "Switch.h"
-
+#include <iostream>
 using namespace std;
 
 const int num_servers = 10;
@@ -12,7 +12,10 @@ int n;
 
 int main(int argc, char **argv) {
 
-    int total_clock_cycles, num_requests;
+    if(argc < 4) {
+        cout << "Usage : ./loadbalancer (total_clock_cycles) (num_requests) (n)" << endl;
+        return 0;
+    }
 
     if(argc >= 2) {
         total_clock_cycles = atoi(argv[1]);
@@ -40,18 +43,21 @@ int main(int argc, char **argv) {
     Switch s(server_types, num_servers);
 
     //generate the num_requests requests
-    vector<vector<Request*>> requests_at_time(10000);
-    for(int i = 0; i < server_types.size(); i++) {
+    vector<vector<Request*>> requests_at_time(total_clock_cycles);
+    for(size_t i = 0; i < server_types.size(); i++) {
         for(int j = 0; j < num_requests; j++) {
             auto request = generateRequest(server_types[i]);
             requests_at_time[request->time_received].push_back(request);
         }
     }
 
-    for(int time = 0; time <= total_clock_cycles; time++) {
+    for(int time = 0; time < total_clock_cycles; time++) {
+        cout << "start of cycle: " << time << endl;
         for(auto request : requests_at_time[time]) {
+            cout << "queue request: " << (*request) << endl;
             s.queueRequest(request);
         }
+        s.simulateClockCycle();
     }
 
     return 0;

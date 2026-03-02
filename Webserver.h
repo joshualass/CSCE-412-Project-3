@@ -15,7 +15,7 @@ struct Webserver {
     string IP_address;
 
     Webserver(string IP_address, char preferred_job_type);
-    bool processRequest(Request* request);
+    void processRequest(Request* request);
     void simulateClockCycle();
     void activate();
     void deactivate();

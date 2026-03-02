@@ -12,7 +12,7 @@ Webserver::Webserver(string IP_address, char preferred_job_type) :
     IP_address(IP_address)
 {}
 
-bool Webserver::processRequest(Request* request) {
+void Webserver::processRequest(Request* request) {
     assert(current_request == nullptr); //we cannot process a request when we already have a request
     current_request = request;
     time_left = request->time_to_complete;
