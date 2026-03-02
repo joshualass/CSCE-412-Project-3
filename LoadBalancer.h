@@ -8,12 +8,11 @@ using namespace std;
 
 struct LoadBalancer {
 
-    int n;
     queue<Request*> request_queue;
     int check_countdown, active_server_count; 
     vector<Webserver> webservers;
 
-    LoadBalancer(vector<Webserver> webservers, int n);
+    LoadBalancer(int num_webservers, char web_server_type);
     void addRequest(Request* request);
     void simulateClockCycle();
 

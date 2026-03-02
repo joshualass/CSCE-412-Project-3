@@ -20,7 +20,7 @@ bool Webserver::processRequest(Request* request) {
 
 void Webserver::simulateClockCycle() {
     if(current_request != nullptr) {
-        time_left -= 1 + (preferred_job_type == current_request->type) * 4;
+        time_left -= 1;
         if(time_left <= 0) {
             //job is complete
             this->current_request->completeRequest(*this);

@@ -1,16 +1,20 @@
 #include "LoadBalancer.h"
 #include "Webserver.h"
 #include "Request.h"
+#include "HelperFunctions.h"
 #include <vector>
 
 using namespace std;
+extern int n;
 
-LoadBalancer::LoadBalancer(vector<Webserver> webservers, int n) : 
-    webservers(webservers),
+LoadBalancer::LoadBalancer(int num_webservers, char web_server_type) : 
     check_countdown(0),
-    n(n),
     active_server_count(0)
-{}
+{
+    for(int i = 0; i < n; i++) {
+        webservers.push_back(Webserver(generateWebserverIP(), web_server_type));
+    }
+}
 
 void LoadBalancer::addRequest(Request* request) {
     request_queue.push(request);
