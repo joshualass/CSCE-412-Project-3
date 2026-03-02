@@ -1,0 +1,17 @@
+<map id="Webserver.cpp" name="Webserver.cpp">
+<area shape="rect" id="Node000001" title="Implements the Webserver lifecycle and clock cycle simulation logic." alt="" coords="209,5,316,31"/>
+<area shape="rect" id="Node000002" href="$_webserver_8h.html" title="Defines the Webserver struct that handles processing network requests." alt="" coords="5,79,99,105"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="226,34,103,76,101,71,228,29"/>
+<area shape="rect" id="Node000004" href="$_request_8h.html" title="Defines the Request struct representing a network job." alt="" coords="123,79,205,105"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="248,30,194,72,191,68,244,33"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="228,79,297,105"/>
+<area shape="poly" id="edge5_Node000001_Node000005" title=" " alt="" coords="264,29,265,64,260,62,261,33"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="320,79,392,105"/>
+<area shape="poly" id="edge6_Node000001_Node000006" title=" " alt="" coords="279,29,331,69,326,70,278,34"/>
+<area shape="rect" id="Node000007" href="$_helper_functions_8h.html" title="Declares utility functions and global color constants for terminal output." alt="" coords="416,79,544,105"/>
+<area shape="poly" id="edge7_Node000001_Node000007" title=" " alt="" coords="300,29,431,73,426,74,299,34"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="137,153,191,178"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="72,103,135,143,130,145,70,108"/>
+<area shape="poly" id="edge4_Node000004_Node000003" title=" " alt="" coords="166,103,166,138,162,136,162,107"/>
+<area shape="poly" id="edge8_Node000007_Node000003" title=" " alt="" coords="427,108,206,157,205,152,425,103"/>
+</map>

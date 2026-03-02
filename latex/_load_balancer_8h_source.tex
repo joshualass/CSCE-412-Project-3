@@ -1,0 +1,40 @@
+\doxysection{Load\+Balancer.\+h}
+\hypertarget{_load_balancer_8h_source}{}\label{_load_balancer_8h_source}\doxymbox{\hyperlink{_load_balancer_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#ifndef\ \_LOADBALANCER\_H\_}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#define\ \_LOADBALANCER\_H\_}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <queue>}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <map>}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{_request_8h}{Request.h}}"{}}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{_webserver_8h}{Webserver.h}}"{}}}
+\DoxyCodeLine{00014\ \textcolor{keyword}{using\ namespace\ }std;}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00024\ \textcolor{keyword}{struct\ }\doxymbox{\hyperlink{struct_load_balancer_af25f879f3cf7084bba203d8b21268b6b}{LoadBalancer}}\ \{}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \doxymbox{\hyperlink{struct_load_balancer_a32d27b700c4fb4d9fc462da9addf1cce}{check\_countdown}};}
+\DoxyCodeLine{00028\ \ \ \ \ }
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \doxymbox{\hyperlink{struct_load_balancer_a1b1c7aad602df4eec67c0d478ce4b1d5}{active\_server\_count}};\ }
+\DoxyCodeLine{00031\ \ \ \ \ }
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keywordtype}{char}\ \doxymbox{\hyperlink{struct_load_balancer_a0a3b5294b97f9bca9f2ccf17790c7e69}{web\_server\_type}};}
+\DoxyCodeLine{00034\ \ \ \ \ }
+\DoxyCodeLine{00036\ \ \ \ \ queue<Request*>\ \doxymbox{\hyperlink{struct_load_balancer_af246b1fba0eb146c79e21f82ee9927f2}{request\_queue}};}
+\DoxyCodeLine{00037\ \ \ \ \ }
+\DoxyCodeLine{00039\ \ \ \ \ vector<Webserver>\ \doxymbox{\hyperlink{struct_load_balancer_a4c325e943167d7a317f9cc0b7329b1be}{webservers}};}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00045\ \ \ \ \ map<int,\ int>\ \doxymbox{\hyperlink{struct_load_balancer_ae26c72553ee0a4391d5faf623628fcbb}{active\_server\_histogram}};}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00052\ \ \ \ \ \doxymbox{\hyperlink{struct_load_balancer_af25f879f3cf7084bba203d8b21268b6b}{LoadBalancer}}(\textcolor{keywordtype}{int}\ num\_webservers,\ \textcolor{keywordtype}{char}\ \doxymbox{\hyperlink{struct_load_balancer_a0a3b5294b97f9bca9f2ccf17790c7e69}{web\_server\_type}});}
+\DoxyCodeLine{00053\ \ \ \ \ }
+\DoxyCodeLine{00058\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{struct_load_balancer_adf67bb1638a90f1b631567e9c2e414c9}{addRequest}}(\doxymbox{\hyperlink{struct_request}{Request}}*\ request);}
+\DoxyCodeLine{00059\ \ \ \ \ }
+\DoxyCodeLine{00065\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{struct_load_balancer_ae1d0ad0027bfb13e39b1038ffc4ec28d}{simulateClockCycle}}();}
+\DoxyCodeLine{00066\ }
+\DoxyCodeLine{00067\ \};}
+\DoxyCodeLine{00068\ }
+\DoxyCodeLine{00069\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

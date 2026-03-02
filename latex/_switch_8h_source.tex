@@ -1,0 +1,29 @@
+\doxysection{Switch.\+h}
+\hypertarget{_switch_8h_source}{}\label{_switch_8h_source}\doxymbox{\hyperlink{_switch_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#ifndef\ \_SWITCH\_H\_}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#define\ \_SWITCH\_H\_}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{_load_balancer_8h}{LoadBalancer.h}}"{}}}
+\DoxyCodeLine{00011\ \textcolor{keyword}{using\ namespace\ }std;}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00020\ \textcolor{keyword}{struct\ }\doxymbox{\hyperlink{struct_switch_a7ac43147ac50274ef8aee0fe1bac7c60}{Switch}}\ \{}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00023\ \ \ \ \ vector<LoadBalancer>\ \doxymbox{\hyperlink{struct_switch_ac2dff702bfc152d0724bde733a62fe0a}{loadBalancers}};}
+\DoxyCodeLine{00024\ \ \ \ \ }
+\DoxyCodeLine{00026\ \ \ \ \ vector<char>\ \doxymbox{\hyperlink{struct_switch_aa690667c398df0a6431b9654adfb468d}{loadBalancerTypes}};}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00033\ \ \ \ \ \doxymbox{\hyperlink{struct_switch_a7ac43147ac50274ef8aee0fe1bac7c60}{Switch}}(vector<char>\ types,\ \textcolor{keywordtype}{int}\ servers\_per\_loadbalancer);}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00039\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{struct_switch_a3bb586a534db32826d9ddb81b0dedd01}{queueRequest}}(\doxymbox{\hyperlink{struct_request}{Request}}\ *request);}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{struct_switch_ad57fda5e5e9458d51583a7822fc69361}{simulateClockCycle}}();}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00046\ \};}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00048\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

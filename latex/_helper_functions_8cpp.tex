@@ -1,0 +1,155 @@
+\doxysection{Helper\+Functions.\+cpp File Reference}
+\hypertarget{_helper_functions_8cpp}{}\label{_helper_functions_8cpp}\index{HelperFunctions.cpp@{HelperFunctions.cpp}}
+
+
+Implements utility functions for generating IPs and network Requests.  
+
+
+{\ttfamily \+\#include "{}Helper\+Functions.\+h"{}}\newline
+{\ttfamily \+\#include "{}Request.\+h"{}}\newline
+{\ttfamily \+\#include $<$string$>$}\newline
+{\ttfamily \+\#include $<$iostream$>$}\newline
+Include dependency graph for Helper\+Functions.\+cpp:\+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_helper_functions_8cpp__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+string \doxymbox{\hyperlink{_helper_functions_8cpp_aef300ac3cc3d796e5292908802ec53de}{generate\+Random\+IP}} ()
+\begin{DoxyCompactList}\small\item\em Creates a random IP address for incoming/\+outgoing network requests. \end{DoxyCompactList}\item 
+string \doxymbox{\hyperlink{_helper_functions_8cpp_ad5cdda7cdac8c550f6c3b619b13f427f}{generate\+Webserver\+IP}} ()
+\begin{DoxyCompactList}\small\item\em Creates a unique, sequential IP address for internal Webservers. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{struct_request}{Request}} \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{_helper_functions_8cpp_a68f6d60074a249dfd4f155016a589830}{generate\+Request}} (char type)
+\begin{DoxyCompactList}\small\item\em Allocates and initializes a new \doxylink{struct_request}{Request} object with random parameters. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+int \doxymbox{\hyperlink{_helper_functions_8cpp_a990afb48c8afb0fd89e68494d20cb134}{webserver\+\_\+cnt}} = 0
+\begin{DoxyCompactList}\small\item\em Global counter to ensure every web server gets a unique IP. \end{DoxyCompactList}\item 
+int \doxymbox{\hyperlink{_helper_functions_8cpp_aa82877694628fc0bdfc8696136c0a8d9}{total\+\_\+clock\+\_\+cycles}}
+\begin{DoxyCompactList}\small\item\em Global reference to the total number of simulated clock cycles. \end{DoxyCompactList}\item 
+int \doxymbox{\hyperlink{_helper_functions_8cpp_ac7aaf75f93c85fec353083723c4788c3}{min\+\_\+task\+\_\+time}}
+\begin{DoxyCompactList}\small\item\em Global reference to the minimum allowed task time. \end{DoxyCompactList}\item 
+int \doxymbox{\hyperlink{_helper_functions_8cpp_a186b2741230dc4b208b374557d9e3624}{max\+\_\+task\+\_\+time}}
+\begin{DoxyCompactList}\small\item\em Global reference to the maximum allowed task time. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Implements utility functions for generating IPs and network Requests. 
+
+
+
+\label{doc-func-members}
+\Hypertarget{_helper_functions_8cpp_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{_helper_functions_8cpp_aef300ac3cc3d796e5292908802ec53de}\index{HelperFunctions.cpp@{HelperFunctions.cpp}!generateRandomIP@{generateRandomIP}}
+\index{generateRandomIP@{generateRandomIP}!HelperFunctions.cpp@{HelperFunctions.cpp}}
+\doxysubsubsection{\texorpdfstring{generateRandomIP()}{generateRandomIP()}}
+{\footnotesize\ttfamily \label{_helper_functions_8cpp_aef300ac3cc3d796e5292908802ec53de} 
+string generate\+Random\+IP (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Creates a random IP address for incoming/\+outgoing network requests. 
+
+Generates a random IPv4 address in the 192.\+168.\+1.\+x subnet.
+
+
+\begin{DoxyItemize}
+\item Uses a standard 192.\+168.\+1.\+x prefix and generates a random final octet between 0 and 999 to simulate diverse network traffic.
+\item \begin{DoxyReturn}{Returns}
+string The formatted IP address string. 
+\end{DoxyReturn}
+
+\end{DoxyItemize}\Hypertarget{_helper_functions_8cpp_a68f6d60074a249dfd4f155016a589830}\index{HelperFunctions.cpp@{HelperFunctions.cpp}!generateRequest@{generateRequest}}
+\index{generateRequest@{generateRequest}!HelperFunctions.cpp@{HelperFunctions.cpp}}
+\doxysubsubsection{\texorpdfstring{generateRequest()}{generateRequest()}}
+{\footnotesize\ttfamily \label{_helper_functions_8cpp_a68f6d60074a249dfd4f155016a589830} 
+\doxymbox{\hyperlink{struct_request}{Request}} \texorpdfstring{$\ast$}{*} generate\+Request (\begin{DoxyParamCaption}\item[{char}]{type}{}\end{DoxyParamCaption})}
+
+
+
+Allocates and initializes a new \doxylink{struct_request}{Request} object with random parameters. 
+
+Generates a new random network \doxylink{struct_request}{Request}.
+
+
+\begin{DoxyItemize}
+\item The required processing time is calculated as a random integer between the globally defined min\+\_\+task\+\_\+time and max\+\_\+task\+\_\+time.
+\item 
+\begin{DoxyParams}{Parameters}
+{\em type} & The required server type for this request. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Request\texorpdfstring{$\ast$}{*} Pointer to the dynamically allocated \doxylink{struct_request}{Request}. 
+\end{DoxyReturn}
+
+\end{DoxyItemize}\Hypertarget{_helper_functions_8cpp_ad5cdda7cdac8c550f6c3b619b13f427f}\index{HelperFunctions.cpp@{HelperFunctions.cpp}!generateWebserverIP@{generateWebserverIP}}
+\index{generateWebserverIP@{generateWebserverIP}!HelperFunctions.cpp@{HelperFunctions.cpp}}
+\doxysubsubsection{\texorpdfstring{generateWebserverIP()}{generateWebserverIP()}}
+{\footnotesize\ttfamily \label{_helper_functions_8cpp_ad5cdda7cdac8c550f6c3b619b13f427f} 
+string generate\+Webserver\+IP (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Creates a unique, sequential IP address for internal Webservers. 
+
+Generates sequential IPv4 addresses for Webservers.
+
+
+\begin{DoxyItemize}
+\item Automatically increments a global counter so no two webservers share an IP.
+\item \begin{DoxyReturn}{Returns}
+string The formatted sequential IP address string. 
+\end{DoxyReturn}
+
+\end{DoxyItemize}
+
+\label{doc-var-members}
+\Hypertarget{_helper_functions_8cpp_doc-var-members}
+\doxysubsection{Variable Documentation}
+\Hypertarget{_helper_functions_8cpp_a186b2741230dc4b208b374557d9e3624}\index{HelperFunctions.cpp@{HelperFunctions.cpp}!max\_task\_time@{max\_task\_time}}
+\index{max\_task\_time@{max\_task\_time}!HelperFunctions.cpp@{HelperFunctions.cpp}}
+\doxysubsubsection{\texorpdfstring{max\_task\_time}{max\_task\_time}}
+{\footnotesize\ttfamily \label{_helper_functions_8cpp_a186b2741230dc4b208b374557d9e3624} 
+int max\+\_\+task\+\_\+time\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Global reference to the maximum allowed task time. 
+
+Global reference to the maximum allowed task time. \Hypertarget{_helper_functions_8cpp_ac7aaf75f93c85fec353083723c4788c3}\index{HelperFunctions.cpp@{HelperFunctions.cpp}!min\_task\_time@{min\_task\_time}}
+\index{min\_task\_time@{min\_task\_time}!HelperFunctions.cpp@{HelperFunctions.cpp}}
+\doxysubsubsection{\texorpdfstring{min\_task\_time}{min\_task\_time}}
+{\footnotesize\ttfamily \label{_helper_functions_8cpp_ac7aaf75f93c85fec353083723c4788c3} 
+int min\+\_\+task\+\_\+time\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Global reference to the minimum allowed task time. 
+
+Global reference to the minimum allowed task time. \Hypertarget{_helper_functions_8cpp_aa82877694628fc0bdfc8696136c0a8d9}\index{HelperFunctions.cpp@{HelperFunctions.cpp}!total\_clock\_cycles@{total\_clock\_cycles}}
+\index{total\_clock\_cycles@{total\_clock\_cycles}!HelperFunctions.cpp@{HelperFunctions.cpp}}
+\doxysubsubsection{\texorpdfstring{total\_clock\_cycles}{total\_clock\_cycles}}
+{\footnotesize\ttfamily \label{_helper_functions_8cpp_aa82877694628fc0bdfc8696136c0a8d9} 
+int total\+\_\+clock\+\_\+cycles\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Global reference to the total number of simulated clock cycles. 
+
+Global reference to the total number of simulated clock cycles. \Hypertarget{_helper_functions_8cpp_a990afb48c8afb0fd89e68494d20cb134}\index{HelperFunctions.cpp@{HelperFunctions.cpp}!webserver\_cnt@{webserver\_cnt}}
+\index{webserver\_cnt@{webserver\_cnt}!HelperFunctions.cpp@{HelperFunctions.cpp}}
+\doxysubsubsection{\texorpdfstring{webserver\_cnt}{webserver\_cnt}}
+{\footnotesize\ttfamily \label{_helper_functions_8cpp_a990afb48c8afb0fd89e68494d20cb134} 
+int webserver\+\_\+cnt = 0}
+
+
+
+Global counter to ensure every web server gets a unique IP. 
+

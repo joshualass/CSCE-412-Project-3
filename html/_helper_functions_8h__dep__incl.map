@@ -1,0 +1,13 @@
+<map id="HelperFunctions.h" name="HelperFunctions.h">
+<area shape="rect" id="Node000001" title="Declares utility functions and global color constants for terminal output." alt="" coords="299,5,426,31"/>
+<area shape="rect" id="Node000002" href="$_helper_functions_8cpp.html" title="Implements utility functions for generating IPs and network Requests." alt="" coords="5,79,147,105"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="300,38,126,81,124,76,299,33"/>
+<area shape="rect" id="Node000003" href="$_load_balancer_8cpp.html" title="Implementation of the LoadBalancer routing, firewall, and auto&#45;scaling logic." alt="" coords="171,79,296,105"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="330,38,256,81,254,76,325,39"/>
+<area shape="rect" id="Node000004" href="$_switch_8cpp.html" title="Implements the Switch routing and simulation logic." alt="" coords="320,79,406,105"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="365,45,365,80,361,77,361,48"/>
+<area shape="rect" id="Node000005" href="$_webserver_8cpp.html" title="Implements the Webserver lifecycle and clock cycle simulation logic." alt="" coords="430,79,538,105"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="397,37,466,79,461,78,396,42"/>
+<area shape="rect" id="Node000006" href="$main_8cpp.html" title="The entry point for the load balancer simulation." alt="" coords="562,79,636,105"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="417,33,564,79,559,79,417,38"/>
+</map>

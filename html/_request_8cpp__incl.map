@@ -1,0 +1,9 @@
+<map id="Request.cpp" name="Request.cpp">
+<area shape="rect" id="Node000001" title="Implements the Request struct lifecycle and stream formatting." alt="" coords="48,5,143,31"/>
+<area shape="rect" id="Node000002" href="$_request_8h.html" title="Defines the Request struct representing a network job." alt="" coords="5,79,87,105"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="86,34,65,68,61,65,88,29"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="110,79,182,105"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="104,29,131,66,126,67,103,34"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="19,153,73,178"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="48,103,49,137,43,136,44,107"/>
+</map>

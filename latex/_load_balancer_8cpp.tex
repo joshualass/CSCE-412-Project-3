@@ -1,0 +1,94 @@
+\doxysection{Load\+Balancer.\+cpp File Reference}
+\hypertarget{_load_balancer_8cpp}{}\label{_load_balancer_8cpp}\index{LoadBalancer.cpp@{LoadBalancer.cpp}}
+
+
+Implementation of the \doxylink{struct_load_balancer}{Load\+Balancer} routing, firewall, and auto-\/scaling logic.  
+
+
+{\ttfamily \+\#include "{}Load\+Balancer.\+h"{}}\newline
+{\ttfamily \+\#include "{}Webserver.\+h"{}}\newline
+{\ttfamily \+\#include "{}Request.\+h"{}}\newline
+{\ttfamily \+\#include "{}Helper\+Functions.\+h"{}}\newline
+{\ttfamily \+\#include $<$vector$>$}\newline
+{\ttfamily \+\#include $<$iostream$>$}\newline
+{\ttfamily \+\#include $<$map$>$}\newline
+Include dependency graph for Load\+Balancer.\+cpp:\+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_load_balancer_8cpp__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+int \doxymbox{\hyperlink{_load_balancer_8cpp_a76f11d9a0a47b94f72c2d0e77fb32240}{n}}
+\begin{DoxyCompactList}\small\item\em Global wait-\/time variable for scaling logic. \end{DoxyCompactList}\item 
+int \doxymbox{\hyperlink{_load_balancer_8cpp_a6dd3187eb016d366dddcb4c280552753}{firewall\+\_\+lower\+\_\+range}}
+\begin{DoxyCompactList}\small\item\em Global lower boundary for the firewall IP block list. \end{DoxyCompactList}\item 
+int \doxymbox{\hyperlink{_load_balancer_8cpp_ad85a08657583744b90b826123690ab15}{firewall\+\_\+upper\+\_\+range}}
+\begin{DoxyCompactList}\small\item\em Global upper boundary for the firewall IP block list. \end{DoxyCompactList}\item 
+int \doxymbox{\hyperlink{_load_balancer_8cpp_a9bb2a849f6993f678914cfb617bd33f9}{total\+\_\+blocked\+\_\+requests}}
+\begin{DoxyCompactList}\small\item\em Tracks the total number of malicious requests dropped by the firewall. \end{DoxyCompactList}\item 
+int \doxymbox{\hyperlink{_load_balancer_8cpp_a8915224642e155ba06d1682e27c56c41}{current\+\_\+time}}
+\begin{DoxyCompactList}\small\item\em Global reference to the current clock cycle, used for timestamping requests. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Implementation of the \doxylink{struct_load_balancer}{Load\+Balancer} routing, firewall, and auto-\/scaling logic. 
+
+
+
+\label{doc-var-members}
+\Hypertarget{_load_balancer_8cpp_doc-var-members}
+\doxysubsection{Variable Documentation}
+\Hypertarget{_load_balancer_8cpp_a8915224642e155ba06d1682e27c56c41}\index{LoadBalancer.cpp@{LoadBalancer.cpp}!current\_time@{current\_time}}
+\index{current\_time@{current\_time}!LoadBalancer.cpp@{LoadBalancer.cpp}}
+\doxysubsubsection{\texorpdfstring{current\_time}{current\_time}}
+{\footnotesize\ttfamily \label{_load_balancer_8cpp_a8915224642e155ba06d1682e27c56c41} 
+int current\+\_\+time\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Global reference to the current clock cycle, used for timestamping requests. 
+
+\Hypertarget{_load_balancer_8cpp_a6dd3187eb016d366dddcb4c280552753}\index{LoadBalancer.cpp@{LoadBalancer.cpp}!firewall\_lower\_range@{firewall\_lower\_range}}
+\index{firewall\_lower\_range@{firewall\_lower\_range}!LoadBalancer.cpp@{LoadBalancer.cpp}}
+\doxysubsubsection{\texorpdfstring{firewall\_lower\_range}{firewall\_lower\_range}}
+{\footnotesize\ttfamily \label{_load_balancer_8cpp_a6dd3187eb016d366dddcb4c280552753} 
+int firewall\+\_\+lower\+\_\+range\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Global lower boundary for the firewall IP block list. 
+
+Global lower boundary for the firewall IP block list. \Hypertarget{_load_balancer_8cpp_ad85a08657583744b90b826123690ab15}\index{LoadBalancer.cpp@{LoadBalancer.cpp}!firewall\_upper\_range@{firewall\_upper\_range}}
+\index{firewall\_upper\_range@{firewall\_upper\_range}!LoadBalancer.cpp@{LoadBalancer.cpp}}
+\doxysubsubsection{\texorpdfstring{firewall\_upper\_range}{firewall\_upper\_range}}
+{\footnotesize\ttfamily \label{_load_balancer_8cpp_ad85a08657583744b90b826123690ab15} 
+int firewall\+\_\+upper\+\_\+range\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Global upper boundary for the firewall IP block list. 
+
+Global upper boundary for the firewall IP block list. \Hypertarget{_load_balancer_8cpp_a76f11d9a0a47b94f72c2d0e77fb32240}\index{LoadBalancer.cpp@{LoadBalancer.cpp}!n@{n}}
+\index{n@{n}!LoadBalancer.cpp@{LoadBalancer.cpp}}
+\doxysubsubsection{\texorpdfstring{n}{n}}
+{\footnotesize\ttfamily \label{_load_balancer_8cpp_a76f11d9a0a47b94f72c2d0e77fb32240} 
+int n\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Global wait-\/time variable for scaling logic. 
+
+Global wait-\/time variable for scaling logic. \Hypertarget{_load_balancer_8cpp_a9bb2a849f6993f678914cfb617bd33f9}\index{LoadBalancer.cpp@{LoadBalancer.cpp}!total\_blocked\_requests@{total\_blocked\_requests}}
+\index{total\_blocked\_requests@{total\_blocked\_requests}!LoadBalancer.cpp@{LoadBalancer.cpp}}
+\doxysubsubsection{\texorpdfstring{total\_blocked\_requests}{total\_blocked\_requests}}
+{\footnotesize\ttfamily \label{_load_balancer_8cpp_a9bb2a849f6993f678914cfb617bd33f9} 
+int total\+\_\+blocked\+\_\+requests\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Tracks the total number of malicious requests dropped by the firewall. 
+

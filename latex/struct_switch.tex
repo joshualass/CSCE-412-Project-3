@@ -1,0 +1,147 @@
+\doxysection{Switch Struct Reference}
+\hypertarget{struct_switch}{}\label{struct_switch}\index{Switch@{Switch}}
+
+
+Acts as a router directing incoming requests to the appropriate \doxylink{struct_load_balancer}{Load\+Balancer}.  
+
+
+
+
+{\ttfamily \+\#include $<$Switch.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{struct_switch_a7ac43147ac50274ef8aee0fe1bac7c60}{Switch}} (vector$<$ char $>$ types, int servers\+\_\+per\+\_\+loadbalancer)
+\begin{DoxyCompactList}\small\item\em Constructs a new \doxylink{struct_switch}{Switch} object. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{struct_switch_a3bb586a534db32826d9ddb81b0dedd01}{queue\+Request}} (\doxymbox{\hyperlink{struct_request}{Request}} \texorpdfstring{$\ast$}{*}request)
+\begin{DoxyCompactList}\small\item\em Routes a request to the correct \doxylink{struct_load_balancer}{Load\+Balancer} based on its type. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{struct_switch_ad57fda5e5e9458d51583a7822fc69361}{simulate\+Clock\+Cycle}} ()
+\begin{DoxyCompactList}\small\item\em Simulates a single clock cycle for all managed Load\+Balancers. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+vector$<$ \doxymbox{\hyperlink{struct_load_balancer}{Load\+Balancer}} $>$ \doxymbox{\hyperlink{struct_switch_ac2dff702bfc152d0724bde733a62fe0a}{load\+Balancers}}
+\begin{DoxyCompactList}\small\item\em Collection of Load\+Balancers managed by the switch. \end{DoxyCompactList}\item 
+vector$<$ char $>$ \doxymbox{\hyperlink{struct_switch_aa690667c398df0a6431b9654adfb468d}{load\+Balancer\+Types}}
+\begin{DoxyCompactList}\small\item\em The types of requests each corresponding \doxylink{struct_load_balancer}{Load\+Balancer} handles. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Acts as a router directing incoming requests to the appropriate \doxylink{struct_load_balancer}{Load\+Balancer}. 
+
+
+\begin{DoxyItemize}
+\item The \doxylink{struct_switch}{Switch} holds multiple Load\+Balancers, each dedicated to a specific type of network request. It inspects incoming requests and forwards them to the \doxylink{struct_load_balancer}{Load\+Balancer} matching the request\textquotesingle{}s type. 
+\end{DoxyItemize}
+
+\label{doc-constructors}
+\Hypertarget{struct_switch_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{struct_switch_a7ac43147ac50274ef8aee0fe1bac7c60}\index{Switch@{Switch}!Switch@{Switch}}
+\index{Switch@{Switch}!Switch@{Switch}}
+\doxysubsubsection{\texorpdfstring{Switch()}{Switch()}}
+{\footnotesize\ttfamily \label{struct_switch_a7ac43147ac50274ef8aee0fe1bac7c60} 
+Switch::\+\+Switch (\begin{DoxyParamCaption}\item[{vector$<$ char $>$}]{types}{, }\item[{int}]{servers\+\_\+per\+\_\+loadbalancer}{}\end{DoxyParamCaption})}
+
+
+
+Constructs a new \doxylink{struct_switch}{Switch} object. 
+
+Initializes the \doxylink{struct_switch}{Switch} and creates its associated Load\+Balancers.
+
+
+\begin{DoxyParams}{Parameters}
+{\em types} & A vector of characters representing the types of Load\+Balancers to create. \\
+\hline
+{\em servers\+\_\+per\+\_\+loadbalancer} & The number of Webservers to initialize per \doxylink{struct_load_balancer}{Load\+Balancer}.\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyItemize}
+\item Iterates through the provided types and creates a \doxylink{struct_load_balancer}{Load\+Balancer} for each, passing along the specified number of initial servers.
+\item 
+\begin{DoxyParams}{Parameters}
+{\em types} & Vector of request types (e.\+g., \textquotesingle{}P\textquotesingle{}, \textquotesingle{}S\textquotesingle{}). \\
+\hline
+{\em servers\+\_\+per\+\_\+loadbalancer} & Initial server count for each \doxylink{struct_load_balancer}{Load\+Balancer}. \\
+\hline
+\end{DoxyParams}
+
+\end{DoxyItemize}
+
+\label{doc-func-members}
+\Hypertarget{struct_switch_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{struct_switch_a3bb586a534db32826d9ddb81b0dedd01}\index{Switch@{Switch}!queueRequest@{queueRequest}}
+\index{queueRequest@{queueRequest}!Switch@{Switch}}
+\doxysubsubsection{\texorpdfstring{queueRequest()}{queueRequest()}}
+{\footnotesize\ttfamily \label{struct_switch_a3bb586a534db32826d9ddb81b0dedd01} 
+void Switch::\+queue\+Request (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{struct_request}{Request}} \texorpdfstring{$\ast$}{*}}]{request}{}\end{DoxyParamCaption})}
+
+
+
+Routes a request to the correct \doxylink{struct_load_balancer}{Load\+Balancer} based on its type. 
+
+Matches an incoming request to its designated \doxylink{struct_load_balancer}{Load\+Balancer}.
+
+
+\begin{DoxyParams}{Parameters}
+{\em request} & A pointer to the \doxylink{struct_request}{Request} object to be routed.\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyItemize}
+\item Checks the type of the given request and pushes it to the \doxylink{struct_load_balancer}{Load\+Balancer} that processes that specific type. Logs the routing event to the terminal.
+\item 
+\begin{DoxyParams}{Parameters}
+{\em request} & Pointer to the incoming \doxylink{struct_request}{Request}. \\
+\hline
+\end{DoxyParams}
+
+\end{DoxyItemize}\Hypertarget{struct_switch_ad57fda5e5e9458d51583a7822fc69361}\index{Switch@{Switch}!simulateClockCycle@{simulateClockCycle}}
+\index{simulateClockCycle@{simulateClockCycle}!Switch@{Switch}}
+\doxysubsubsection{\texorpdfstring{simulateClockCycle()}{simulateClockCycle()}}
+{\footnotesize\ttfamily \label{struct_switch_ad57fda5e5e9458d51583a7822fc69361} 
+void Switch::\+simulate\+Clock\+Cycle (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Simulates a single clock cycle for all managed Load\+Balancers. 
+
+Advances the simulation by one cycle for all Load\+Balancers.
+
+
+\begin{DoxyItemize}
+\item Iterates through all Load\+Balancers held by the \doxylink{struct_switch}{Switch} and calls their \doxylink{struct_switch_ad57fda5e5e9458d51583a7822fc69361}{simulate\+Clock\+Cycle()} functions. 
+\end{DoxyItemize}
+
+\label{doc-variable-members}
+\Hypertarget{struct_switch_doc-variable-members}
+\doxysubsection{Member Data Documentation}
+\Hypertarget{struct_switch_ac2dff702bfc152d0724bde733a62fe0a}\index{Switch@{Switch}!loadBalancers@{loadBalancers}}
+\index{loadBalancers@{loadBalancers}!Switch@{Switch}}
+\doxysubsubsection{\texorpdfstring{loadBalancers}{loadBalancers}}
+{\footnotesize\ttfamily \label{struct_switch_ac2dff702bfc152d0724bde733a62fe0a} 
+vector$<$\doxymbox{\hyperlink{struct_load_balancer}{Load\+Balancer}}$>$ Switch::\+load\+Balancers}
+
+
+
+Collection of Load\+Balancers managed by the switch. 
+
+\Hypertarget{struct_switch_aa690667c398df0a6431b9654adfb468d}\index{Switch@{Switch}!loadBalancerTypes@{loadBalancerTypes}}
+\index{loadBalancerTypes@{loadBalancerTypes}!Switch@{Switch}}
+\doxysubsubsection{\texorpdfstring{loadBalancerTypes}{loadBalancerTypes}}
+{\footnotesize\ttfamily \label{struct_switch_aa690667c398df0a6431b9654adfb468d} 
+vector$<$char$>$ Switch::\+load\+Balancer\+Types}
+
+
+
+The types of requests each corresponding \doxylink{struct_load_balancer}{Load\+Balancer} handles. 
+
+
+
+The documentation for this struct was generated from the following files:\+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{_switch_8h}{Switch.\+h}}\item 
+\doxymbox{\hyperlink{_switch_8cpp}{Switch.\+cpp}}\end{DoxyCompactItemize}

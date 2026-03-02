@@ -1,0 +1,7 @@
+<map id="Switch.h" name="Switch.h">
+<area shape="rect" id="Node000001" title="Defines the Switch struct used to route traffic to LoadBalancers." alt="" coords="64,5,137,31"/>
+<area shape="rect" id="Node000002" href="$_switch_8cpp.html" title="Implements the Switch routing and simulation logic." alt="" coords="5,79,92,105"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="86,43,59,80,55,77,80,44"/>
+<area shape="rect" id="Node000003" href="$main_8cpp.html" title="The entry point for the load balancer simulation." alt="" coords="115,79,190,105"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="119,41,146,79,141,78,117,46"/>
+</map>

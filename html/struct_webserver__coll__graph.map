@@ -1,0 +1,5 @@
+<map id="Webserver" name="Webserver">
+<area shape="rect" id="Node000001" title="Simulates a physical server executing network requests over time." alt="" coords="5,102,89,128"/>
+<area shape="rect" id="Node000002" href="$struct_request.html" title="Represents a single network request to be processed by a Webserver." alt="" coords="12,5,82,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="49,45,50,102,44,101,45,48"/>
+</map>

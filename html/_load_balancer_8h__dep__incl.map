@@ -1,0 +1,13 @@
+<map id="LoadBalancer.h" name="LoadBalancer.h">
+<area shape="rect" id="Node000001" title="Defines the LoadBalancer struct responsible for queue management and auto&#45;scaling." alt="" coords="148,5,259,31"/>
+<area shape="rect" id="Node000002" href="$_load_balancer_8cpp.html" title="Implementation of the LoadBalancer routing, firewall, and auto&#45;scaling logic." alt="" coords="5,79,130,105"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="166,41,92,81,89,76,169,36"/>
+<area shape="rect" id="Node000003" href="$_switch_8cpp.html" title="Implements the Switch routing and simulation logic." alt="" coords="146,153,232,178"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="200,44,195,79,191,154,186,151,190,79,196,48"/>
+<area shape="rect" id="Node000004" href="$_switch_8h.html" title="Defines the Switch struct used to route traffic to LoadBalancers." alt="" coords="205,79,277,105"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="218,42,237,79,232,78,216,47"/>
+<area shape="rect" id="Node000005" href="$main_8cpp.html" title="The entry point for the load balancer simulation." alt="" coords="266,153,341,178"/>
+<area shape="poly" id="edge6_Node000001_Node000005" title=" " alt="" coords="245,36,270,54,291,78,300,97,305,117,306,154,302,151,299,118,295,98,287,80,267,58,244,42"/>
+<area shape="poly" id="edge4_Node000004_Node000003" title=" " alt="" coords="226,116,199,154,196,150,221,118"/>
+<area shape="poly" id="edge5_Node000004_Node000005" title=" " alt="" coords="262,114,296,153,290,152,260,119"/>
+</map>

@@ -1,0 +1,53 @@
+\doxysection{Request.\+cpp File Reference}
+\hypertarget{_request_8cpp}{}\label{_request_8cpp}\index{Request.cpp@{Request.cpp}}
+
+
+Implements the \doxylink{struct_request}{Request} struct lifecycle and stream formatting.  
+
+
+{\ttfamily \+\#include "{}Request.\+h"{}}\newline
+{\ttfamily \+\#include $<$iostream$>$}\newline
+Include dependency graph for Request.\+cpp:\+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=212pt]{_request_8cpp__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+ostream \& \doxymbox{\hyperlink{_request_8cpp_ad082baa951294ef794b4ee7ee9771c10}{operator$<$$<$}} (ostream \&os, const \doxymbox{\hyperlink{struct_request}{Request}} \&req)
+\begin{DoxyCompactList}\small\item\em Formats the \doxylink{struct_request}{Request} object into a readable string for logging. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Implements the \doxylink{struct_request}{Request} struct lifecycle and stream formatting. 
+
+
+
+\label{doc-func-members}
+\Hypertarget{_request_8cpp_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{_request_8cpp_ad082baa951294ef794b4ee7ee9771c10}\index{Request.cpp@{Request.cpp}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!Request.cpp@{Request.cpp}}
+\doxysubsubsection{\texorpdfstring{operator$<$$<$()}{operator<<()}}
+{\footnotesize\ttfamily \label{_request_8cpp_ad082baa951294ef794b4ee7ee9771c10} 
+ostream \& operator$<$$<$ (\begin{DoxyParamCaption}\item[{ostream \&}]{os}{, }\item[{const \doxymbox{\hyperlink{struct_request}{Request}} \&}]{req}{}\end{DoxyParamCaption})}
+
+
+
+Formats the \doxylink{struct_request}{Request} object into a readable string for logging. 
+
+Overloads the stream insertion operator for easy printing.
+
+
+\begin{DoxyParams}{Parameters}
+{\em os} & The output stream. \\
+\hline
+{\em req} & The \doxylink{struct_request}{Request} to format and print. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+ostream\& The modified output stream. 
+\end{DoxyReturn}

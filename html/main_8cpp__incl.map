@@ -1,0 +1,29 @@
+<map id="main.cpp" name="main.cpp">
+<area shape="rect" id="Node000001" title="The entry point for the load balancer simulation." alt="" coords="288,5,362,31"/>
+<area shape="rect" id="Node000002" href="$_load_balancer_8h.html" title="Defines the LoadBalancer struct responsible for queue management and auto&#45;scaling." alt="" coords="136,153,246,178"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="316,30,215,143,211,139,312,33"/>
+<area shape="rect" id="Node000006" href="$_request_8h.html" title="Defines the Request struct representing a network job." alt="" coords="239,226,320,252"/>
+<area shape="poly" id="edge9_Node000001_Node000006" title=" " alt="" coords="325,30,287,213,282,210,320,33"/>
+<area shape="rect" id="Node000008" href="$_webserver_8h.html" title="Defines the Webserver struct that handles processing network requests." alt="" coords="345,226,438,252"/>
+<area shape="poly" id="edge10_Node000001_Node000008" title=" " alt="" coords="330,29,386,212,381,211,327,33"/>
+<area shape="rect" id="Node000009" href="$_helper_functions_8h.html" title="Declares utility functions and global color constants for terminal output." alt="" coords="400,153,527,178"/>
+<area shape="poly" id="edge11_Node000001_Node000009" title=" " alt="" coords="337,29,444,141,439,141,335,34"/>
+<area shape="rect" id="Node000010" href="$_switch_8h.html" title="Defines the Switch struct used to route traffic to LoadBalancers." alt="" coords="139,79,212,105"/>
+<area shape="poly" id="edge13_Node000001_Node000010" title=" " alt="" coords="297,33,216,74,213,70,301,30"/>
+<area shape="rect" id="Node000011" title=" " alt="" coords="438,79,510,105"/>
+<area shape="poly" id="edge16_Node000001_Node000011" title=" " alt="" coords="350,29,438,71,432,73,350,34"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="87,226,144,252"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="180,177,141,218,137,214,176,181"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="5,226,63,252"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="164,181,76,222,73,217,166,176"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="168,226,214,252"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="193,176,194,212,189,209,190,181"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="207,176,255,216,250,217,206,181"/>
+<area shape="poly" id="edge7_Node000002_Node000008" title=" " alt="" coords="226,176,345,220,340,222,225,182"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="365,300,418,326"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="299,250,362,291,357,291,298,255"/>
+<area shape="poly" id="edge8_Node000008_Node000007" title=" " alt="" coords="393,250,393,286,389,283,389,254"/>
+<area shape="poly" id="edge12_Node000009_Node000007" title=" " alt="" coords="465,177,464,213,452,253,438,274,421,292,419,287,434,271,448,251,459,212,462,181"/>
+<area shape="poly" id="edge15_Node000010_Node000002" title=" " alt="" coords="179,102,188,138,183,137,177,107"/>
+<area shape="poly" id="edge14_Node000010_Node000004" title=" " alt="" coords="165,107,58,217,54,213,163,103"/>
+</map>

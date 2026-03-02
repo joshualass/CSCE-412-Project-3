@@ -1,0 +1,19 @@
+\chapter{Load Balancer Simulation Project }
+\hypertarget{index}{}\label{index}\index{Load Balancer Simulation Project@{Load Balancer Simulation Project}}
+
+\begin{DoxyItemize}
+\item 
+\end{DoxyItemize}\hypertarget{index_intro_sec}{}\doxysection{\texorpdfstring{Introduction}{Introduction}}\label{index_intro_sec}
+This project simulates a dynamic load-\/balancing network that routes incoming web requests to a cluster of web servers. It is designed to run for a specified number of clock cycles (e.\+g., 10,000) and dynamically scale the number of active servers based on the current queue size to optimize network performance.
+\begin{DoxyItemize}
+\item 
+\end{DoxyItemize}\hypertarget{index_features_sec}{}\doxysection{\texorpdfstring{Key Features}{Key Features}}\label{index_features_sec}
+
+\begin{DoxyItemize}
+\item {\bfseries{Dynamic Auto-\/\+Scaling:\+}} Servers are automatically activated or deactivated depending on traffic volume and queue depth.
+\item {\bfseries{IP Firewall:\+}} Malicious requests falling within a user-\/defined IP range are actively blocked and dropped before reaching the servers.
+\item {\bfseries{Variable Task Times:\+}} Processing times for incoming requests are randomized within a dynamic, user-\/provided range.
+\item {\bfseries{Comprehensive Metrics:\+}} Calculates and logs average queue wait times, total turnaround times, and server utilization histograms.
+\item 
+\end{DoxyItemize}\hypertarget{index_usage_sec}{}\doxysection{\texorpdfstring{How to Run}{How to Run}}\label{index_usage_sec}
+The simulation is executed via the command line with the following parameters:\+ {\ttfamily make} {\ttfamily ./\+loadbalancer (total\+\_\+cycles) (\doxylink{main_8cpp_a8d69425bbfc64b113c657a15263f4190}{num\+\_\+requests}) (check\+\_\+interval) (firewall\+\_\+low) (firewall\+\_\+high) (\doxylink{main_8cpp_ac7aaf75f93c85fec353083723c4788c3}{min\+\_\+task\+\_\+time}) (\doxylink{main_8cpp_a186b2741230dc4b208b374557d9e3624}{max\+\_\+task\+\_\+time})} 

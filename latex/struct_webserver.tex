@@ -1,0 +1,215 @@
+\doxysection{Webserver Struct Reference}
+\hypertarget{struct_webserver}{}\label{struct_webserver}\index{Webserver@{Webserver}}
+
+
+Simulates a physical server executing network requests over time.  
+
+
+
+
+{\ttfamily \+\#include $<$Webserver.\+h$>$}
+
+
+
+Collaboration diagram for Webserver:\+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=185pt]{struct_webserver__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{struct_webserver_ac1b00338813d6d21b7e773c213163a0f}{Webserver}} (string \doxymbox{\hyperlink{struct_webserver_a07dc4fb471de57a00f91032b6cff488d}{IP\+\_\+address}}, char \doxymbox{\hyperlink{struct_webserver_a420c5d7db9129a42b34fd6a0c64acbf5}{preferred\+\_\+job\+\_\+type}})
+\begin{DoxyCompactList}\small\item\em Constructs a new \doxylink{struct_webserver}{Webserver} object. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{struct_webserver_acbde22316a2222457f2a612cafc02278}{process\+Request}} (\doxymbox{\hyperlink{struct_request}{Request}} \texorpdfstring{$\ast$}{*}request)
+\begin{DoxyCompactList}\small\item\em Assigns a new request to this server for processing. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{struct_webserver_af00b4be74066448396706305c03b7544}{simulate\+Clock\+Cycle}} ()
+\begin{DoxyCompactList}\small\item\em Advances the processing time by one clock cycle. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{struct_webserver_a096ddbe66d797c57d045339f188b9c1d}{activate}} ()
+\begin{DoxyCompactList}\small\item\em Powers on the server, making it eligible for new requests. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{struct_webserver_ae97ce063c274f50a0fc0580abc68ecd9}{deactivate}} ()
+\begin{DoxyCompactList}\small\item\em Powers off the server, saving resources. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+bool \doxymbox{\hyperlink{struct_webserver_a5964d27d8f140d3dcd2d4d7e8d255088}{active}}
+\begin{DoxyCompactList}\small\item\em True if the server is powered on and capable of accepting requests. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{struct_request}{Request}} \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{struct_webserver_abdd80f8f343f67d8ca58c9b50a8c991c}{current\+\_\+request}}
+\begin{DoxyCompactList}\small\item\em Pointer to the \doxylink{struct_request}{Request} currently being processed (nullptr if idle). \end{DoxyCompactList}\item 
+int \doxymbox{\hyperlink{struct_webserver_a055304517811d0d4e275af24642a6a99}{time\+\_\+left}}
+\begin{DoxyCompactList}\small\item\em Number of clock cycles remaining until the current request is complete. \end{DoxyCompactList}\item 
+char \doxymbox{\hyperlink{struct_webserver_a420c5d7db9129a42b34fd6a0c64acbf5}{preferred\+\_\+job\+\_\+type}}
+\begin{DoxyCompactList}\small\item\em The type of traffic this server is optimized for. \end{DoxyCompactList}\item 
+string \doxymbox{\hyperlink{struct_webserver_a07dc4fb471de57a00f91032b6cff488d}{IP\+\_\+address}}
+\begin{DoxyCompactList}\small\item\em The unique IPv4 address assigned to this server. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Simulates a physical server executing network requests over time. 
+
+
+\begin{DoxyItemize}
+\item A \doxylink{struct_webserver}{Webserver} can be toggled on or off (active/\+inactive) by a \doxylink{struct_load_balancer}{Load\+Balancer}. When active and assigned a \doxylink{struct_request}{Request}, it counts down the required clock cycles until the job is fully processed. 
+\end{DoxyItemize}
+
+\label{doc-constructors}
+\Hypertarget{struct_webserver_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{struct_webserver_ac1b00338813d6d21b7e773c213163a0f}\index{Webserver@{Webserver}!Webserver@{Webserver}}
+\index{Webserver@{Webserver}!Webserver@{Webserver}}
+\doxysubsubsection{\texorpdfstring{Webserver()}{Webserver()}}
+{\footnotesize\ttfamily \label{struct_webserver_ac1b00338813d6d21b7e773c213163a0f} 
+Webserver::\+\+Webserver (\begin{DoxyParamCaption}\item[{string}]{IP\+\_\+address}{, }\item[{char}]{preferred\+\_\+job\+\_\+type}{}\end{DoxyParamCaption})}
+
+
+
+Constructs a new \doxylink{struct_webserver}{Webserver} object. 
+
+Initializes an inactive \doxylink{struct_webserver}{Webserver} with no active requests.
+
+
+\begin{DoxyParams}{Parameters}
+{\em \doxylink{struct_webserver_a07dc4fb471de57a00f91032b6cff488d}{IP\+\_\+address}} & The unique IP address for this server. \\
+\hline
+{\em \doxylink{struct_webserver_a420c5d7db9129a42b34fd6a0c64acbf5}{preferred\+\_\+job\+\_\+type}} & The request type this server handles. \\
+\hline
+\end{DoxyParams}
+
+
+\label{doc-func-members}
+\Hypertarget{struct_webserver_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{struct_webserver_a096ddbe66d797c57d045339f188b9c1d}\index{Webserver@{Webserver}!activate@{activate}}
+\index{activate@{activate}!Webserver@{Webserver}}
+\doxysubsubsection{\texorpdfstring{activate()}{activate()}}
+{\footnotesize\ttfamily \label{struct_webserver_a096ddbe66d797c57d045339f188b9c1d} 
+void Webserver::\+activate (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Powers on the server, making it eligible for new requests. 
+
+Activates the server.
+
+
+\begin{DoxyItemize}
+\item Asserts that the server is currently inactive before changing state. 
+\end{DoxyItemize}\Hypertarget{struct_webserver_ae97ce063c274f50a0fc0580abc68ecd9}\index{Webserver@{Webserver}!deactivate@{deactivate}}
+\index{deactivate@{deactivate}!Webserver@{Webserver}}
+\doxysubsubsection{\texorpdfstring{deactivate()}{deactivate()}}
+{\footnotesize\ttfamily \label{struct_webserver_ae97ce063c274f50a0fc0580abc68ecd9} 
+void Webserver::\+deactivate (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Powers off the server, saving resources. 
+
+Deactivates the server.
+
+
+\begin{DoxyItemize}
+\item Asserts that the server is currently active before changing state. 
+\end{DoxyItemize}\Hypertarget{struct_webserver_acbde22316a2222457f2a612cafc02278}\index{Webserver@{Webserver}!processRequest@{processRequest}}
+\index{processRequest@{processRequest}!Webserver@{Webserver}}
+\doxysubsubsection{\texorpdfstring{processRequest()}{processRequest()}}
+{\footnotesize\ttfamily \label{struct_webserver_acbde22316a2222457f2a612cafc02278} 
+void Webserver::\+process\+Request (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{struct_request}{Request}} \texorpdfstring{$\ast$}{*}}]{request}{}\end{DoxyParamCaption})}
+
+
+
+Assigns a new request to this server for processing. 
+
+Begins processing a new \doxylink{struct_request}{Request}.
+
+
+\begin{DoxyParams}{Parameters}
+{\em request} & Pointer to the \doxylink{struct_request}{Request} to be executed.\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyItemize}
+\item Asserts that the server is not already busy before taking on the new job. Sets the internal countdown timer to the request\textquotesingle{}s required time.
+\item 
+\begin{DoxyParams}{Parameters}
+{\em request} & Pointer to the assigned \doxylink{struct_request}{Request}. \\
+\hline
+\end{DoxyParams}
+
+\end{DoxyItemize}\Hypertarget{struct_webserver_af00b4be74066448396706305c03b7544}\index{Webserver@{Webserver}!simulateClockCycle@{simulateClockCycle}}
+\index{simulateClockCycle@{simulateClockCycle}!Webserver@{Webserver}}
+\doxysubsubsection{\texorpdfstring{simulateClockCycle()}{simulateClockCycle()}}
+{\footnotesize\ttfamily \label{struct_webserver_af00b4be74066448396706305c03b7544} 
+void Webserver::\+simulate\+Clock\+Cycle (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Advances the processing time by one clock cycle. 
+
+Decrements the remaining time on the current request.
+
+
+\begin{DoxyItemize}
+\item If the timer reaches zero, the request is marked complete, logged to the terminal in green, and the server\textquotesingle{}s current\+\_\+request pointer is reset to nullptr so it can accept a new job. 
+\end{DoxyItemize}
+
+\label{doc-variable-members}
+\Hypertarget{struct_webserver_doc-variable-members}
+\doxysubsection{Member Data Documentation}
+\Hypertarget{struct_webserver_a5964d27d8f140d3dcd2d4d7e8d255088}\index{Webserver@{Webserver}!active@{active}}
+\index{active@{active}!Webserver@{Webserver}}
+\doxysubsubsection{\texorpdfstring{active}{active}}
+{\footnotesize\ttfamily \label{struct_webserver_a5964d27d8f140d3dcd2d4d7e8d255088} 
+bool Webserver::\+active}
+
+
+
+True if the server is powered on and capable of accepting requests. 
+
+\Hypertarget{struct_webserver_abdd80f8f343f67d8ca58c9b50a8c991c}\index{Webserver@{Webserver}!current\_request@{current\_request}}
+\index{current\_request@{current\_request}!Webserver@{Webserver}}
+\doxysubsubsection{\texorpdfstring{current\_request}{current\_request}}
+{\footnotesize\ttfamily \label{struct_webserver_abdd80f8f343f67d8ca58c9b50a8c991c} 
+\doxymbox{\hyperlink{struct_request}{Request}}\texorpdfstring{$\ast$}{*} Webserver::\+current\+\_\+request}
+
+
+
+Pointer to the \doxylink{struct_request}{Request} currently being processed (nullptr if idle). 
+
+\Hypertarget{struct_webserver_a07dc4fb471de57a00f91032b6cff488d}\index{Webserver@{Webserver}!IP\_address@{IP\_address}}
+\index{IP\_address@{IP\_address}!Webserver@{Webserver}}
+\doxysubsubsection{\texorpdfstring{IP\_address}{IP\_address}}
+{\footnotesize\ttfamily \label{struct_webserver_a07dc4fb471de57a00f91032b6cff488d} 
+string Webserver::\+\+IP\+\_\+address}
+
+
+
+The unique IPv4 address assigned to this server. 
+
+\Hypertarget{struct_webserver_a420c5d7db9129a42b34fd6a0c64acbf5}\index{Webserver@{Webserver}!preferred\_job\_type@{preferred\_job\_type}}
+\index{preferred\_job\_type@{preferred\_job\_type}!Webserver@{Webserver}}
+\doxysubsubsection{\texorpdfstring{preferred\_job\_type}{preferred\_job\_type}}
+{\footnotesize\ttfamily \label{struct_webserver_a420c5d7db9129a42b34fd6a0c64acbf5} 
+char Webserver::\+preferred\+\_\+job\+\_\+type}
+
+
+
+The type of traffic this server is optimized for. 
+
+\Hypertarget{struct_webserver_a055304517811d0d4e275af24642a6a99}\index{Webserver@{Webserver}!time\_left@{time\_left}}
+\index{time\_left@{time\_left}!Webserver@{Webserver}}
+\doxysubsubsection{\texorpdfstring{time\_left}{time\_left}}
+{\footnotesize\ttfamily \label{struct_webserver_a055304517811d0d4e275af24642a6a99} 
+int Webserver::\+time\+\_\+left}
+
+
+
+Number of clock cycles remaining until the current request is complete. 
+
+
+
+The documentation for this struct was generated from the following files:\+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{_webserver_8h}{Webserver.\+h}}\item 
+\doxymbox{\hyperlink{_webserver_8cpp}{Webserver.\+cpp}}\end{DoxyCompactItemize}

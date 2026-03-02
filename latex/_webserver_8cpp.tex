@@ -1,0 +1,80 @@
+\doxysection{Webserver.\+cpp File Reference}
+\hypertarget{_webserver_8cpp}{}\label{_webserver_8cpp}\index{Webserver.cpp@{Webserver.cpp}}
+
+
+Implements the \doxylink{struct_webserver}{Webserver} lifecycle and clock cycle simulation logic.  
+
+
+{\ttfamily \+\#include "{}Webserver.\+h"{}}\newline
+{\ttfamily \+\#include "{}Request.\+h"{}}\newline
+{\ttfamily \+\#include $<$assert.\+h$>$}\newline
+{\ttfamily \+\#include $<$iostream$>$}\newline
+{\ttfamily \+\#include "{}Helper\+Functions.\+h"{}}\newline
+Include dependency graph for Webserver.\+cpp:\+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_webserver_8cpp__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+int \doxymbox{\hyperlink{_webserver_8cpp_a3f4911e8f6c5107aeb05cb45182e3d2e}{total\+\_\+completed\+\_\+requests}}
+\begin{DoxyCompactList}\small\item\em Tracks the total number of requests successfully completely by all webservers. \end{DoxyCompactList}\item 
+int \doxymbox{\hyperlink{_webserver_8cpp_a8915224642e155ba06d1682e27c56c41}{current\+\_\+time}}
+\begin{DoxyCompactList}\small\item\em Global reference to the current clock cycle, used for timestamping requests. \end{DoxyCompactList}\item 
+long long \doxymbox{\hyperlink{_webserver_8cpp_ac2fab073157c9ac5bc5cd7d11822fce1}{total\+\_\+queue\+\_\+time}}
+\begin{DoxyCompactList}\small\item\em Accumulates the total clock cycles all completed requests spent waiting in the queue. \end{DoxyCompactList}\item 
+long long \doxymbox{\hyperlink{_webserver_8cpp_a198b53619845acad206b932e0696b12d}{total\+\_\+turnaround\+\_\+time}}
+\begin{DoxyCompactList}\small\item\em Accumulates the total turnaround time (wait time + processing time) for all completed requests. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Implements the \doxylink{struct_webserver}{Webserver} lifecycle and clock cycle simulation logic. 
+
+
+
+\label{doc-var-members}
+\Hypertarget{_webserver_8cpp_doc-var-members}
+\doxysubsection{Variable Documentation}
+\Hypertarget{_webserver_8cpp_a8915224642e155ba06d1682e27c56c41}\index{Webserver.cpp@{Webserver.cpp}!current\_time@{current\_time}}
+\index{current\_time@{current\_time}!Webserver.cpp@{Webserver.cpp}}
+\doxysubsubsection{\texorpdfstring{current\_time}{current\_time}}
+{\footnotesize\ttfamily \label{_webserver_8cpp_a8915224642e155ba06d1682e27c56c41} 
+int current\+\_\+time\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Global reference to the current clock cycle, used for timestamping requests. 
+
+\Hypertarget{_webserver_8cpp_a3f4911e8f6c5107aeb05cb45182e3d2e}\index{Webserver.cpp@{Webserver.cpp}!total\_completed\_requests@{total\_completed\_requests}}
+\index{total\_completed\_requests@{total\_completed\_requests}!Webserver.cpp@{Webserver.cpp}}
+\doxysubsubsection{\texorpdfstring{total\_completed\_requests}{total\_completed\_requests}}
+{\footnotesize\ttfamily \label{_webserver_8cpp_a3f4911e8f6c5107aeb05cb45182e3d2e} 
+int total\+\_\+completed\+\_\+requests\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Tracks the total number of requests successfully completely by all webservers. 
+
+\Hypertarget{_webserver_8cpp_ac2fab073157c9ac5bc5cd7d11822fce1}\index{Webserver.cpp@{Webserver.cpp}!total\_queue\_time@{total\_queue\_time}}
+\index{total\_queue\_time@{total\_queue\_time}!Webserver.cpp@{Webserver.cpp}}
+\doxysubsubsection{\texorpdfstring{total\_queue\_time}{total\_queue\_time}}
+{\footnotesize\ttfamily \label{_webserver_8cpp_ac2fab073157c9ac5bc5cd7d11822fce1} 
+long long total\+\_\+queue\+\_\+time\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Accumulates the total clock cycles all completed requests spent waiting in the queue. 
+
+\Hypertarget{_webserver_8cpp_a198b53619845acad206b932e0696b12d}\index{Webserver.cpp@{Webserver.cpp}!total\_turnaround\_time@{total\_turnaround\_time}}
+\index{total\_turnaround\_time@{total\_turnaround\_time}!Webserver.cpp@{Webserver.cpp}}
+\doxysubsubsection{\texorpdfstring{total\_turnaround\_time}{total\_turnaround\_time}}
+{\footnotesize\ttfamily \label{_webserver_8cpp_a198b53619845acad206b932e0696b12d} 
+long long total\+\_\+turnaround\+\_\+time\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Accumulates the total turnaround time (wait time + processing time) for all completed requests. 
+

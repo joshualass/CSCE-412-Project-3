@@ -1,0 +1,226 @@
+\doxysection{main.\+cpp File Reference}
+\hypertarget{main_8cpp}{}\label{main_8cpp}\index{main.cpp@{main.cpp}}
+
+
+The entry point for the load balancer simulation.  
+
+
+{\ttfamily \+\#include "{}Load\+Balancer.\+h"{}}\newline
+{\ttfamily \+\#include "{}Request.\+h"{}}\newline
+{\ttfamily \+\#include "{}Webserver.\+h"{}}\newline
+{\ttfamily \+\#include "{}Helper\+Functions.\+h"{}}\newline
+{\ttfamily \+\#include "{}Switch.\+h"{}}\newline
+{\ttfamily \+\#include $<$iostream$>$}\newline
+Include dependency graph for main.\+cpp:\+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{main_8cpp__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \doxymbox{\hyperlink{main_8cpp_a3c04138a5bfe5d72780bb7e82a18e627}{main}} (int argc, char \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}argv)
+\begin{DoxyCompactList}\small\item\em Main execution function for the simulation. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+const int \doxymbox{\hyperlink{main_8cpp_a5ad7203318794696495804bb1996d8b4}{num\+\_\+servers}} = 10
+\begin{DoxyCompactList}\small\item\em The default number of servers allocated to each \doxylink{struct_load_balancer}{Load\+Balancer}. \end{DoxyCompactList}\item 
+int \doxymbox{\hyperlink{main_8cpp_aa82877694628fc0bdfc8696136c0a8d9}{total\+\_\+clock\+\_\+cycles}}
+\begin{DoxyCompactList}\small\item\em Total number of clock cycles the simulation will run. \end{DoxyCompactList}\item 
+int \doxymbox{\hyperlink{main_8cpp_a8d69425bbfc64b113c657a15263f4190}{num\+\_\+requests}}
+\begin{DoxyCompactList}\small\item\em Number of requests to generate per server type. \end{DoxyCompactList}\item 
+int \doxymbox{\hyperlink{main_8cpp_a6dd3187eb016d366dddcb4c280552753}{firewall\+\_\+lower\+\_\+range}}
+\begin{DoxyCompactList}\small\item\em Lower bound of the IP range blocked by the firewall. \end{DoxyCompactList}\item 
+int \doxymbox{\hyperlink{main_8cpp_ad85a08657583744b90b826123690ab15}{firewall\+\_\+upper\+\_\+range}}
+\begin{DoxyCompactList}\small\item\em Upper bound of the IP range blocked by the firewall. \end{DoxyCompactList}\item 
+int \doxymbox{\hyperlink{main_8cpp_a76f11d9a0a47b94f72c2d0e77fb32240}{n}}
+\begin{DoxyCompactList}\small\item\em Number of clock cycles to wait before checking if scaling is needed. \end{DoxyCompactList}\item 
+int \doxymbox{\hyperlink{main_8cpp_a9bb2a849f6993f678914cfb617bd33f9}{total\+\_\+blocked\+\_\+requests}} = 0
+\begin{DoxyCompactList}\small\item\em Tracks the total number of malicious requests dropped by the firewall. \end{DoxyCompactList}\item 
+int \doxymbox{\hyperlink{main_8cpp_a3f4911e8f6c5107aeb05cb45182e3d2e}{total\+\_\+completed\+\_\+requests}} = 0
+\begin{DoxyCompactList}\small\item\em Tracks the total number of requests successfully completely by all webservers. \end{DoxyCompactList}\item 
+int \doxymbox{\hyperlink{main_8cpp_a8915224642e155ba06d1682e27c56c41}{current\+\_\+time}} = 0
+\begin{DoxyCompactList}\small\item\em Global reference to the current clock cycle, used for timestamping requests. \end{DoxyCompactList}\item 
+long long \doxymbox{\hyperlink{main_8cpp_ac2fab073157c9ac5bc5cd7d11822fce1}{total\+\_\+queue\+\_\+time}} = 0
+\begin{DoxyCompactList}\small\item\em Accumulates the total clock cycles all completed requests spent waiting in the queue. \end{DoxyCompactList}\item 
+long long \doxymbox{\hyperlink{main_8cpp_a198b53619845acad206b932e0696b12d}{total\+\_\+turnaround\+\_\+time}} = 0
+\begin{DoxyCompactList}\small\item\em Accumulates the total turnaround time (wait time + processing time) for all completed requests. \end{DoxyCompactList}\item 
+int \doxymbox{\hyperlink{main_8cpp_ac7aaf75f93c85fec353083723c4788c3}{min\+\_\+task\+\_\+time}}
+\begin{DoxyCompactList}\small\item\em The minimum number of clock cycles a task requires to complete. \end{DoxyCompactList}\item 
+int \doxymbox{\hyperlink{main_8cpp_a186b2741230dc4b208b374557d9e3624}{max\+\_\+task\+\_\+time}}
+\begin{DoxyCompactList}\small\item\em The maximum number of clock cycles a task requires to complete. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+The entry point for the load balancer simulation. 
+
+
+\begin{DoxyItemize}
+\item This file handles command-\/line argument parsing, initializes the simulation parameters, generates the simulated network traffic, and runs the main clock cycle loop to process requests through the \doxylink{struct_switch}{Switch} and Load\+Balancers. It also tracks performance metrics and outputs simulation summaries. 
+\end{DoxyItemize}
+
+\label{doc-func-members}
+\Hypertarget{main_8cpp_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{main_8cpp_a3c04138a5bfe5d72780bb7e82a18e627}\index{main.cpp@{main.cpp}!main@{main}}
+\index{main@{main}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily \label{main_8cpp_a3c04138a5bfe5d72780bb7e82a18e627} 
+int main (\begin{DoxyParamCaption}\item[{int}]{argc}{, }\item[{char \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{argv}{}\end{DoxyParamCaption})}
+
+
+
+Main execution function for the simulation. 
+
+
+\begin{DoxyItemize}
+\item Takes in simulation parameters via command line, sets up the \doxylink{struct_switch}{Switch} with designated server types (\textquotesingle{}P\textquotesingle{} and \textquotesingle{}S\textquotesingle{}), generates requests, and runs the simulated clock cycles.
+\item 
+\begin{DoxyParams}{Parameters}
+{\em argc} & The number of command-\/line arguments. \\
+\hline
+{\em argv} & The command-\/line arguments (total\+\_\+clock\+\_\+cycles, num\+\_\+requests, n, firewall\+\_\+lower\+\_\+range, firewall\+\_\+upper\+\_\+range) (min\+\_\+task\+\_\+time) (max\+\_\+task\+\_\+time). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int Exit status of the program (0 for success). 
+\end{DoxyReturn}
+
+\end{DoxyItemize}
+
+\label{doc-var-members}
+\Hypertarget{main_8cpp_doc-var-members}
+\doxysubsection{Variable Documentation}
+\Hypertarget{main_8cpp_a8915224642e155ba06d1682e27c56c41}\index{main.cpp@{main.cpp}!current\_time@{current\_time}}
+\index{current\_time@{current\_time}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{current\_time}{current\_time}}
+{\footnotesize\ttfamily \label{main_8cpp_a8915224642e155ba06d1682e27c56c41} 
+int current\+\_\+time = 0}
+
+
+
+Global reference to the current clock cycle, used for timestamping requests. 
+
+\Hypertarget{main_8cpp_a6dd3187eb016d366dddcb4c280552753}\index{main.cpp@{main.cpp}!firewall\_lower\_range@{firewall\_lower\_range}}
+\index{firewall\_lower\_range@{firewall\_lower\_range}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{firewall\_lower\_range}{firewall\_lower\_range}}
+{\footnotesize\ttfamily \label{main_8cpp_a6dd3187eb016d366dddcb4c280552753} 
+int firewall\+\_\+lower\+\_\+range}
+
+
+
+Lower bound of the IP range blocked by the firewall. 
+
+Global lower boundary for the firewall IP block list. \Hypertarget{main_8cpp_ad85a08657583744b90b826123690ab15}\index{main.cpp@{main.cpp}!firewall\_upper\_range@{firewall\_upper\_range}}
+\index{firewall\_upper\_range@{firewall\_upper\_range}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{firewall\_upper\_range}{firewall\_upper\_range}}
+{\footnotesize\ttfamily \label{main_8cpp_ad85a08657583744b90b826123690ab15} 
+int firewall\+\_\+upper\+\_\+range}
+
+
+
+Upper bound of the IP range blocked by the firewall. 
+
+Global upper boundary for the firewall IP block list. \Hypertarget{main_8cpp_a186b2741230dc4b208b374557d9e3624}\index{main.cpp@{main.cpp}!max\_task\_time@{max\_task\_time}}
+\index{max\_task\_time@{max\_task\_time}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{max\_task\_time}{max\_task\_time}}
+{\footnotesize\ttfamily \label{main_8cpp_a186b2741230dc4b208b374557d9e3624} 
+int max\+\_\+task\+\_\+time}
+
+
+
+The maximum number of clock cycles a task requires to complete. 
+
+Global reference to the maximum allowed task time. \Hypertarget{main_8cpp_ac7aaf75f93c85fec353083723c4788c3}\index{main.cpp@{main.cpp}!min\_task\_time@{min\_task\_time}}
+\index{min\_task\_time@{min\_task\_time}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{min\_task\_time}{min\_task\_time}}
+{\footnotesize\ttfamily \label{main_8cpp_ac7aaf75f93c85fec353083723c4788c3} 
+int min\+\_\+task\+\_\+time}
+
+
+
+The minimum number of clock cycles a task requires to complete. 
+
+Global reference to the minimum allowed task time. \Hypertarget{main_8cpp_a76f11d9a0a47b94f72c2d0e77fb32240}\index{main.cpp@{main.cpp}!n@{n}}
+\index{n@{n}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{n}{n}}
+{\footnotesize\ttfamily \label{main_8cpp_a76f11d9a0a47b94f72c2d0e77fb32240} 
+int n}
+
+
+
+Number of clock cycles to wait before checking if scaling is needed. 
+
+Global wait-\/time variable for scaling logic. \Hypertarget{main_8cpp_a8d69425bbfc64b113c657a15263f4190}\index{main.cpp@{main.cpp}!num\_requests@{num\_requests}}
+\index{num\_requests@{num\_requests}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{num\_requests}{num\_requests}}
+{\footnotesize\ttfamily \label{main_8cpp_a8d69425bbfc64b113c657a15263f4190} 
+int num\+\_\+requests}
+
+
+
+Number of requests to generate per server type. 
+
+\Hypertarget{main_8cpp_a5ad7203318794696495804bb1996d8b4}\index{main.cpp@{main.cpp}!num\_servers@{num\_servers}}
+\index{num\_servers@{num\_servers}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{num\_servers}{num\_servers}}
+{\footnotesize\ttfamily \label{main_8cpp_a5ad7203318794696495804bb1996d8b4} 
+const int num\+\_\+servers = 10}
+
+
+
+The default number of servers allocated to each \doxylink{struct_load_balancer}{Load\+Balancer}. 
+
+\Hypertarget{main_8cpp_a9bb2a849f6993f678914cfb617bd33f9}\index{main.cpp@{main.cpp}!total\_blocked\_requests@{total\_blocked\_requests}}
+\index{total\_blocked\_requests@{total\_blocked\_requests}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{total\_blocked\_requests}{total\_blocked\_requests}}
+{\footnotesize\ttfamily \label{main_8cpp_a9bb2a849f6993f678914cfb617bd33f9} 
+int total\+\_\+blocked\+\_\+requests = 0}
+
+
+
+Tracks the total number of malicious requests dropped by the firewall. 
+
+\Hypertarget{main_8cpp_aa82877694628fc0bdfc8696136c0a8d9}\index{main.cpp@{main.cpp}!total\_clock\_cycles@{total\_clock\_cycles}}
+\index{total\_clock\_cycles@{total\_clock\_cycles}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{total\_clock\_cycles}{total\_clock\_cycles}}
+{\footnotesize\ttfamily \label{main_8cpp_aa82877694628fc0bdfc8696136c0a8d9} 
+int total\+\_\+clock\+\_\+cycles}
+
+
+
+Total number of clock cycles the simulation will run. 
+
+Global reference to the total number of simulated clock cycles. \Hypertarget{main_8cpp_a3f4911e8f6c5107aeb05cb45182e3d2e}\index{main.cpp@{main.cpp}!total\_completed\_requests@{total\_completed\_requests}}
+\index{total\_completed\_requests@{total\_completed\_requests}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{total\_completed\_requests}{total\_completed\_requests}}
+{\footnotesize\ttfamily \label{main_8cpp_a3f4911e8f6c5107aeb05cb45182e3d2e} 
+int total\+\_\+completed\+\_\+requests = 0}
+
+
+
+Tracks the total number of requests successfully completely by all webservers. 
+
+\Hypertarget{main_8cpp_ac2fab073157c9ac5bc5cd7d11822fce1}\index{main.cpp@{main.cpp}!total\_queue\_time@{total\_queue\_time}}
+\index{total\_queue\_time@{total\_queue\_time}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{total\_queue\_time}{total\_queue\_time}}
+{\footnotesize\ttfamily \label{main_8cpp_ac2fab073157c9ac5bc5cd7d11822fce1} 
+long long total\+\_\+queue\+\_\+time = 0}
+
+
+
+Accumulates the total clock cycles all completed requests spent waiting in the queue. 
+
+\Hypertarget{main_8cpp_a198b53619845acad206b932e0696b12d}\index{main.cpp@{main.cpp}!total\_turnaround\_time@{total\_turnaround\_time}}
+\index{total\_turnaround\_time@{total\_turnaround\_time}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{total\_turnaround\_time}{total\_turnaround\_time}}
+{\footnotesize\ttfamily \label{main_8cpp_a198b53619845acad206b932e0696b12d} 
+long long total\+\_\+turnaround\+\_\+time = 0}
+
+
+
+Accumulates the total turnaround time (wait time + processing time) for all completed requests. 
+

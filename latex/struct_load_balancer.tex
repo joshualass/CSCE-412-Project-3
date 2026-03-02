@@ -1,0 +1,196 @@
+\doxysection{Load\+Balancer Struct Reference}
+\hypertarget{struct_load_balancer}{}\label{struct_load_balancer}\index{LoadBalancer@{LoadBalancer}}
+
+
+Manages a queue of requests and scales Webservers dynamically based on load.  
+
+
+
+
+{\ttfamily \+\#include $<$Load\+Balancer.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{struct_load_balancer_af25f879f3cf7084bba203d8b21268b6b}{Load\+Balancer}} (int num\+\_\+webservers, char \doxymbox{\hyperlink{struct_load_balancer_a0a3b5294b97f9bca9f2ccf17790c7e69}{web\+\_\+server\+\_\+type}})
+\begin{DoxyCompactList}\small\item\em Constructs a new \doxylink{struct_load_balancer}{Load\+Balancer} object. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{struct_load_balancer_adf67bb1638a90f1b631567e9c2e414c9}{add\+Request}} (\doxymbox{\hyperlink{struct_request}{Request}} \texorpdfstring{$\ast$}{*}request)
+\begin{DoxyCompactList}\small\item\em Processes an incoming request through the firewall and adds it to the queue. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{struct_load_balancer_ae1d0ad0027bfb13e39b1038ffc4ec28d}{simulate\+Clock\+Cycle}} ()
+\begin{DoxyCompactList}\small\item\em Simulates a single clock cycle for the \doxylink{struct_load_balancer}{Load\+Balancer} and its servers. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+size\+\_\+t \doxymbox{\hyperlink{struct_load_balancer_a32d27b700c4fb4d9fc462da9addf1cce}{check\+\_\+countdown}}
+\begin{DoxyCompactList}\small\item\em Cycles remaining until the load balancer can check if scaling is needed again. \end{DoxyCompactList}\item 
+size\+\_\+t \doxymbox{\hyperlink{struct_load_balancer_a1b1c7aad602df4eec67c0d478ce4b1d5}{active\+\_\+server\+\_\+count}}
+\begin{DoxyCompactList}\small\item\em The number of Webservers currently powered on and accepting requests. \end{DoxyCompactList}\item 
+char \doxymbox{\hyperlink{struct_load_balancer_a0a3b5294b97f9bca9f2ccf17790c7e69}{web\+\_\+server\+\_\+type}}
+\begin{DoxyCompactList}\small\item\em The specific type of request this load balancer handles (e.\+g., \textquotesingle{}V\textquotesingle{} or \textquotesingle{}S\textquotesingle{}). \end{DoxyCompactList}\item 
+queue$<$ \doxymbox{\hyperlink{struct_request}{Request}} \texorpdfstring{$\ast$}{*} $>$ \doxymbox{\hyperlink{struct_load_balancer_af246b1fba0eb146c79e21f82ee9927f2}{request\+\_\+queue}}
+\begin{DoxyCompactList}\small\item\em Queue holding incoming requests waiting to be processed. \end{DoxyCompactList}\item 
+vector$<$ \doxymbox{\hyperlink{struct_webserver}{Webserver}} $>$ \doxymbox{\hyperlink{struct_load_balancer_a4c325e943167d7a317f9cc0b7329b1be}{webservers}}
+\begin{DoxyCompactList}\small\item\em Vector containing all allocated \doxylink{struct_webserver}{Webserver} objects. \end{DoxyCompactList}\item 
+map$<$ int, int $>$ \doxymbox{\hyperlink{struct_load_balancer_ae26c72553ee0a4391d5faf623628fcbb}{active\+\_\+server\+\_\+histogram}}
+\begin{DoxyCompactList}\small\item\em Histogram tracking the number of clock cycles spent with exactly \textquotesingle{}k\textquotesingle{} active servers. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Manages a queue of requests and scales Webservers dynamically based on load. 
+
+
+\begin{DoxyItemize}
+\item The \doxylink{struct_load_balancer}{Load\+Balancer} acts as the middleman between the \doxylink{struct_switch}{Switch} and the individual Webservers. It contains a built-\/in firewall to drop malicious IPs, an internal queue to hold pending requests, and logic to activate or deactivate servers based on current traffic demands. 
+\end{DoxyItemize}
+
+\label{doc-constructors}
+\Hypertarget{struct_load_balancer_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{struct_load_balancer_af25f879f3cf7084bba203d8b21268b6b}\index{LoadBalancer@{LoadBalancer}!LoadBalancer@{LoadBalancer}}
+\index{LoadBalancer@{LoadBalancer}!LoadBalancer@{LoadBalancer}}
+\doxysubsubsection{\texorpdfstring{LoadBalancer()}{LoadBalancer()}}
+{\footnotesize\ttfamily \label{struct_load_balancer_af25f879f3cf7084bba203d8b21268b6b} 
+Load\+Balancer::\+\+Load\+Balancer (\begin{DoxyParamCaption}\item[{int}]{num\+\_\+webservers}{, }\item[{char}]{web\+\_\+server\+\_\+type}{}\end{DoxyParamCaption})}
+
+
+
+Constructs a new \doxylink{struct_load_balancer}{Load\+Balancer} object. 
+
+Initializes a \doxylink{struct_load_balancer}{Load\+Balancer} with a set number of Webservers.
+
+
+\begin{DoxyParams}{Parameters}
+{\em num\+\_\+webservers} & The number of servers to allocate for this balancer. \\
+\hline
+{\em \doxylink{struct_load_balancer_a0a3b5294b97f9bca9f2ccf17790c7e69}{web\+\_\+server\+\_\+type}} & The character representing the type of server traffic handled.\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyItemize}
+\item Generates initial Webservers with random IP addresses matching the balancer\textquotesingle{}s designated web\+\_\+server\+\_\+type.
+\item 
+\begin{DoxyParams}{Parameters}
+{\em num\+\_\+webservers} & The initial number of webservers to provision (Note:\+ uses global \textquotesingle{}n\textquotesingle{} for generation loop). \\
+\hline
+{\em \doxylink{struct_load_balancer_a0a3b5294b97f9bca9f2ccf17790c7e69}{web\+\_\+server\+\_\+type}} & The type of traffic this load balancer will process. \\
+\hline
+\end{DoxyParams}
+
+\end{DoxyItemize}
+
+\label{doc-func-members}
+\Hypertarget{struct_load_balancer_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{struct_load_balancer_adf67bb1638a90f1b631567e9c2e414c9}\index{LoadBalancer@{LoadBalancer}!addRequest@{addRequest}}
+\index{addRequest@{addRequest}!LoadBalancer@{LoadBalancer}}
+\doxysubsubsection{\texorpdfstring{addRequest()}{addRequest()}}
+{\footnotesize\ttfamily \label{struct_load_balancer_adf67bb1638a90f1b631567e9c2e414c9} 
+void Load\+Balancer::\+add\+Request (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{struct_request}{Request}} \texorpdfstring{$\ast$}{*}}]{request}{}\end{DoxyParamCaption})}
+
+
+
+Processes an incoming request through the firewall and adds it to the queue. 
+
+Filters incoming requests through a firewall before queueing them.
+
+
+\begin{DoxyParams}{Parameters}
+{\em request} & Pointer to the incoming \doxylink{struct_request}{Request} object.\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyItemize}
+\item Parses the final octet of the incoming request\textquotesingle{}s IP address. If the value falls within the global firewall range, the request is blocked, logged as malicious, and deleted from memory. Otherwise, it is pushed to the queue.
+\item 
+\begin{DoxyParams}{Parameters}
+{\em request} & Pointer to the \doxylink{struct_request}{Request} object to evaluate and queue. \\
+\hline
+\end{DoxyParams}
+
+\end{DoxyItemize}\Hypertarget{struct_load_balancer_ae1d0ad0027bfb13e39b1038ffc4ec28d}\index{LoadBalancer@{LoadBalancer}!simulateClockCycle@{simulateClockCycle}}
+\index{simulateClockCycle@{simulateClockCycle}!LoadBalancer@{LoadBalancer}}
+\doxysubsubsection{\texorpdfstring{simulateClockCycle()}{simulateClockCycle()}}
+{\footnotesize\ttfamily \label{struct_load_balancer_ae1d0ad0027bfb13e39b1038ffc4ec28d} 
+void Load\+Balancer::\+simulate\+Clock\+Cycle (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Simulates a single clock cycle for the \doxylink{struct_load_balancer}{Load\+Balancer} and its servers. 
+
+Evaluates scaling thresholds, delegates requests, and advances time.
+
+
+\begin{DoxyItemize}
+\item Evaluates auto-\/scaling thresholds, assigns queued requests to idle active servers, and advances the clock cycle for all managed Webservers.
+\item Every clock cycle, the load balancer checks if the cooldown timer (check\+\_\+countdown) has reached zero. If so, it evaluates the ratio of queued requests to active servers. If traffic is too high, it activates an offline server. If traffic is low, it deactivates an online server to save resources. Finally, it delegates requests from the front of the queue to available active servers and calls \doxylink{struct_load_balancer_ae1d0ad0027bfb13e39b1038ffc4ec28d}{simulate\+Clock\+Cycle()} on every server. 
+\end{DoxyItemize}
+
+\label{doc-variable-members}
+\Hypertarget{struct_load_balancer_doc-variable-members}
+\doxysubsection{Member Data Documentation}
+\Hypertarget{struct_load_balancer_a1b1c7aad602df4eec67c0d478ce4b1d5}\index{LoadBalancer@{LoadBalancer}!active\_server\_count@{active\_server\_count}}
+\index{active\_server\_count@{active\_server\_count}!LoadBalancer@{LoadBalancer}}
+\doxysubsubsection{\texorpdfstring{active\_server\_count}{active\_server\_count}}
+{\footnotesize\ttfamily \label{struct_load_balancer_a1b1c7aad602df4eec67c0d478ce4b1d5} 
+size\+\_\+t Load\+Balancer::\+active\+\_\+server\+\_\+count}
+
+
+
+The number of Webservers currently powered on and accepting requests. 
+
+\Hypertarget{struct_load_balancer_ae26c72553ee0a4391d5faf623628fcbb}\index{LoadBalancer@{LoadBalancer}!active\_server\_histogram@{active\_server\_histogram}}
+\index{active\_server\_histogram@{active\_server\_histogram}!LoadBalancer@{LoadBalancer}}
+\doxysubsubsection{\texorpdfstring{active\_server\_histogram}{active\_server\_histogram}}
+{\footnotesize\ttfamily \label{struct_load_balancer_ae26c72553ee0a4391d5faf623628fcbb} 
+map$<$int, int$>$ Load\+Balancer::\+active\+\_\+server\+\_\+histogram}
+
+
+
+Histogram tracking the number of clock cycles spent with exactly \textquotesingle{}k\textquotesingle{} active servers. 
+
+\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} The key represents the number of active servers (\textquotesingle{}k\textquotesingle{}), and the value represents the total number of clock cycles the load balancer spent in that state. \Hypertarget{struct_load_balancer_a32d27b700c4fb4d9fc462da9addf1cce}\index{LoadBalancer@{LoadBalancer}!check\_countdown@{check\_countdown}}
+\index{check\_countdown@{check\_countdown}!LoadBalancer@{LoadBalancer}}
+\doxysubsubsection{\texorpdfstring{check\_countdown}{check\_countdown}}
+{\footnotesize\ttfamily \label{struct_load_balancer_a32d27b700c4fb4d9fc462da9addf1cce} 
+size\+\_\+t Load\+Balancer::\+check\+\_\+countdown}
+
+
+
+Cycles remaining until the load balancer can check if scaling is needed again. 
+
+\Hypertarget{struct_load_balancer_af246b1fba0eb146c79e21f82ee9927f2}\index{LoadBalancer@{LoadBalancer}!request\_queue@{request\_queue}}
+\index{request\_queue@{request\_queue}!LoadBalancer@{LoadBalancer}}
+\doxysubsubsection{\texorpdfstring{request\_queue}{request\_queue}}
+{\footnotesize\ttfamily \label{struct_load_balancer_af246b1fba0eb146c79e21f82ee9927f2} 
+queue$<$\doxymbox{\hyperlink{struct_request}{Request}}\texorpdfstring{$\ast$}{*}$>$ Load\+Balancer::\+request\+\_\+queue}
+
+
+
+Queue holding incoming requests waiting to be processed. 
+
+\Hypertarget{struct_load_balancer_a0a3b5294b97f9bca9f2ccf17790c7e69}\index{LoadBalancer@{LoadBalancer}!web\_server\_type@{web\_server\_type}}
+\index{web\_server\_type@{web\_server\_type}!LoadBalancer@{LoadBalancer}}
+\doxysubsubsection{\texorpdfstring{web\_server\_type}{web\_server\_type}}
+{\footnotesize\ttfamily \label{struct_load_balancer_a0a3b5294b97f9bca9f2ccf17790c7e69} 
+char Load\+Balancer::\+web\+\_\+server\+\_\+type}
+
+
+
+The specific type of request this load balancer handles (e.\+g., \textquotesingle{}V\textquotesingle{} or \textquotesingle{}S\textquotesingle{}). 
+
+\Hypertarget{struct_load_balancer_a4c325e943167d7a317f9cc0b7329b1be}\index{LoadBalancer@{LoadBalancer}!webservers@{webservers}}
+\index{webservers@{webservers}!LoadBalancer@{LoadBalancer}}
+\doxysubsubsection{\texorpdfstring{webservers}{webservers}}
+{\footnotesize\ttfamily \label{struct_load_balancer_a4c325e943167d7a317f9cc0b7329b1be} 
+vector$<$\doxymbox{\hyperlink{struct_webserver}{Webserver}}$>$ Load\+Balancer::\+webservers}
+
+
+
+Vector containing all allocated \doxylink{struct_webserver}{Webserver} objects. 
+
+
+
+The documentation for this struct was generated from the following files:\+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{_load_balancer_8h}{Load\+Balancer.\+h}}\item 
+\doxymbox{\hyperlink{_load_balancer_8cpp}{Load\+Balancer.\+cpp}}\end{DoxyCompactItemize}

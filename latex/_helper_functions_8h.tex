@@ -1,0 +1,209 @@
+\doxysection{Helper\+Functions.\+h File Reference}
+\hypertarget{_helper_functions_8h}{}\label{_helper_functions_8h}\index{HelperFunctions.h@{HelperFunctions.h}}
+
+
+Declares utility functions and global color constants for terminal output.  
+
+
+{\ttfamily \+\#include $<$string$>$}\newline
+Include dependency graph for Helper\+Functions.\+h:\+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=176pt]{_helper_functions_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file:\+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_helper_functions_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+string \doxymbox{\hyperlink{_helper_functions_8h_aef300ac3cc3d796e5292908802ec53de}{generate\+Random\+IP}} ()
+\begin{DoxyCompactList}\small\item\em Generates a random IPv4 address in the 192.\+168.\+1.\+x subnet. \end{DoxyCompactList}\item 
+string \doxymbox{\hyperlink{_helper_functions_8h_ad5cdda7cdac8c550f6c3b619b13f427f}{generate\+Webserver\+IP}} ()
+\begin{DoxyCompactList}\small\item\em Generates sequential IPv4 addresses for Webservers. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{struct_request}{Request}} \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{_helper_functions_8h_a68f6d60074a249dfd4f155016a589830}{generate\+Request}} (char type)
+\begin{DoxyCompactList}\small\item\em Generates a new random network \doxylink{struct_request}{Request}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+const string \doxymbox{\hyperlink{_helper_functions_8h_a9a31596d4859c8ad599295239748e3dc}{RESET}} = "{}\textbackslash{}033\+[0m"{}
+\begin{DoxyCompactList}\small\item\em ANSI color code to reset terminal output to default. \end{DoxyCompactList}\item 
+const string \doxymbox{\hyperlink{_helper_functions_8h_ab84a8b06714421dcae7acf288a7b61a0}{RED}} = "{}\textbackslash{}033\+[31m"{}
+\begin{DoxyCompactList}\small\item\em ANSI color code for red text (used for blocking/\+scaling down). \end{DoxyCompactList}\item 
+const string \doxymbox{\hyperlink{_helper_functions_8h_a6549a333ff1f3c45c95ec71167e8880e}{GREEN}} = "{}\textbackslash{}033\+[32m"{}
+\begin{DoxyCompactList}\small\item\em ANSI color code for green text (used for successful completions). \end{DoxyCompactList}\item 
+const string \doxymbox{\hyperlink{_helper_functions_8h_a1f7a26bd4f473d811093b8b0be1ca753}{YELLOW}} = "{}\textbackslash{}033\+[33m"{}
+\begin{DoxyCompactList}\small\item\em ANSI color code for yellow text (used for scaling up). \end{DoxyCompactList}\item 
+const string \doxymbox{\hyperlink{_helper_functions_8h_a99c5c15cb598940d80f857dba62040a5}{BLUE}} = "{}\textbackslash{}033\+[34m"{}
+\begin{DoxyCompactList}\small\item\em ANSI color code for blue text (used for assigning requests). \end{DoxyCompactList}\item 
+const string \doxymbox{\hyperlink{_helper_functions_8h_a9d1a2e31c30e2e054682627a6e40ed59}{CYAN}} = "{}\textbackslash{}033\+[36m"{}
+\begin{DoxyCompactList}\small\item\em ANSI color code for cyan text (used for switch routing). \end{DoxyCompactList}\item 
+const string \doxymbox{\hyperlink{_helper_functions_8h_a48340d44e6645ed7c5e121bef55b5e58}{MAGENTA}} = "{}\textbackslash{}033\+[35m"{}
+\begin{DoxyCompactList}\small\item\em ANSI color code for magenta text (used for clock cycle headers). \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Declares utility functions and global color constants for terminal output. 
+
+
+
+\label{doc-func-members}
+\Hypertarget{_helper_functions_8h_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{_helper_functions_8h_aef300ac3cc3d796e5292908802ec53de}\index{HelperFunctions.h@{HelperFunctions.h}!generateRandomIP@{generateRandomIP}}
+\index{generateRandomIP@{generateRandomIP}!HelperFunctions.h@{HelperFunctions.h}}
+\doxysubsubsection{\texorpdfstring{generateRandomIP()}{generateRandomIP()}}
+{\footnotesize\ttfamily \label{_helper_functions_8h_aef300ac3cc3d796e5292908802ec53de} 
+string generate\+Random\+IP (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Generates a random IPv4 address in the 192.\+168.\+1.\+x subnet. 
+
+\begin{DoxyReturn}{Returns}
+string A randomly generated IP address.
+\end{DoxyReturn}
+Generates a random IPv4 address in the 192.\+168.\+1.\+x subnet.
+
+
+\begin{DoxyItemize}
+\item Uses a standard 192.\+168.\+1.\+x prefix and generates a random final octet between 0 and 999 to simulate diverse network traffic.
+\item \begin{DoxyReturn}{Returns}
+string The formatted IP address string. 
+\end{DoxyReturn}
+
+\end{DoxyItemize}\Hypertarget{_helper_functions_8h_a68f6d60074a249dfd4f155016a589830}\index{HelperFunctions.h@{HelperFunctions.h}!generateRequest@{generateRequest}}
+\index{generateRequest@{generateRequest}!HelperFunctions.h@{HelperFunctions.h}}
+\doxysubsubsection{\texorpdfstring{generateRequest()}{generateRequest()}}
+{\footnotesize\ttfamily \label{_helper_functions_8h_a68f6d60074a249dfd4f155016a589830} 
+\doxymbox{\hyperlink{struct_request}{Request}} \texorpdfstring{$\ast$}{*} generate\+Request (\begin{DoxyParamCaption}\item[{char}]{type}{}\end{DoxyParamCaption})}
+
+
+
+Generates a new random network \doxylink{struct_request}{Request}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em type} & The type of web server requested (e.\+g., \textquotesingle{}P\textquotesingle{} or \textquotesingle{}S\textquotesingle{}). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Request\texorpdfstring{$\ast$}{*} A pointer to the newly allocated \doxylink{struct_request}{Request} object.
+\end{DoxyReturn}
+Generates a new random network \doxylink{struct_request}{Request}.
+
+
+\begin{DoxyItemize}
+\item The required processing time is calculated as a random integer between the globally defined min\+\_\+task\+\_\+time and max\+\_\+task\+\_\+time.
+\item 
+\begin{DoxyParams}{Parameters}
+{\em type} & The required server type for this request. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Request\texorpdfstring{$\ast$}{*} Pointer to the dynamically allocated \doxylink{struct_request}{Request}. 
+\end{DoxyReturn}
+
+\end{DoxyItemize}\Hypertarget{_helper_functions_8h_ad5cdda7cdac8c550f6c3b619b13f427f}\index{HelperFunctions.h@{HelperFunctions.h}!generateWebserverIP@{generateWebserverIP}}
+\index{generateWebserverIP@{generateWebserverIP}!HelperFunctions.h@{HelperFunctions.h}}
+\doxysubsubsection{\texorpdfstring{generateWebserverIP()}{generateWebserverIP()}}
+{\footnotesize\ttfamily \label{_helper_functions_8h_ad5cdda7cdac8c550f6c3b619b13f427f} 
+string generate\+Webserver\+IP (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Generates sequential IPv4 addresses for Webservers. 
+
+\begin{DoxyReturn}{Returns}
+string A sequentially generated IP address.
+\end{DoxyReturn}
+Generates sequential IPv4 addresses for Webservers.
+
+
+\begin{DoxyItemize}
+\item Automatically increments a global counter so no two webservers share an IP.
+\item \begin{DoxyReturn}{Returns}
+string The formatted sequential IP address string. 
+\end{DoxyReturn}
+
+\end{DoxyItemize}
+
+\label{doc-var-members}
+\Hypertarget{_helper_functions_8h_doc-var-members}
+\doxysubsection{Variable Documentation}
+\Hypertarget{_helper_functions_8h_a99c5c15cb598940d80f857dba62040a5}\index{HelperFunctions.h@{HelperFunctions.h}!BLUE@{BLUE}}
+\index{BLUE@{BLUE}!HelperFunctions.h@{HelperFunctions.h}}
+\doxysubsubsection{\texorpdfstring{BLUE}{BLUE}}
+{\footnotesize\ttfamily \label{_helper_functions_8h_a99c5c15cb598940d80f857dba62040a5} 
+const string BLUE = "{}\textbackslash{}033\+[34m"{}}
+
+
+
+ANSI color code for blue text (used for assigning requests). 
+
+\Hypertarget{_helper_functions_8h_a9d1a2e31c30e2e054682627a6e40ed59}\index{HelperFunctions.h@{HelperFunctions.h}!CYAN@{CYAN}}
+\index{CYAN@{CYAN}!HelperFunctions.h@{HelperFunctions.h}}
+\doxysubsubsection{\texorpdfstring{CYAN}{CYAN}}
+{\footnotesize\ttfamily \label{_helper_functions_8h_a9d1a2e31c30e2e054682627a6e40ed59} 
+const string CYAN = "{}\textbackslash{}033\+[36m"{}}
+
+
+
+ANSI color code for cyan text (used for switch routing). 
+
+\Hypertarget{_helper_functions_8h_a6549a333ff1f3c45c95ec71167e8880e}\index{HelperFunctions.h@{HelperFunctions.h}!GREEN@{GREEN}}
+\index{GREEN@{GREEN}!HelperFunctions.h@{HelperFunctions.h}}
+\doxysubsubsection{\texorpdfstring{GREEN}{GREEN}}
+{\footnotesize\ttfamily \label{_helper_functions_8h_a6549a333ff1f3c45c95ec71167e8880e} 
+const string GREEN = "{}\textbackslash{}033\+[32m"{}}
+
+
+
+ANSI color code for green text (used for successful completions). 
+
+\Hypertarget{_helper_functions_8h_a48340d44e6645ed7c5e121bef55b5e58}\index{HelperFunctions.h@{HelperFunctions.h}!MAGENTA@{MAGENTA}}
+\index{MAGENTA@{MAGENTA}!HelperFunctions.h@{HelperFunctions.h}}
+\doxysubsubsection{\texorpdfstring{MAGENTA}{MAGENTA}}
+{\footnotesize\ttfamily \label{_helper_functions_8h_a48340d44e6645ed7c5e121bef55b5e58} 
+const string MAGENTA = "{}\textbackslash{}033\+[35m"{}}
+
+
+
+ANSI color code for magenta text (used for clock cycle headers). 
+
+\Hypertarget{_helper_functions_8h_ab84a8b06714421dcae7acf288a7b61a0}\index{HelperFunctions.h@{HelperFunctions.h}!RED@{RED}}
+\index{RED@{RED}!HelperFunctions.h@{HelperFunctions.h}}
+\doxysubsubsection{\texorpdfstring{RED}{RED}}
+{\footnotesize\ttfamily \label{_helper_functions_8h_ab84a8b06714421dcae7acf288a7b61a0} 
+const string RED = "{}\textbackslash{}033\+[31m"{}}
+
+
+
+ANSI color code for red text (used for blocking/\+scaling down). 
+
+\Hypertarget{_helper_functions_8h_a9a31596d4859c8ad599295239748e3dc}\index{HelperFunctions.h@{HelperFunctions.h}!RESET@{RESET}}
+\index{RESET@{RESET}!HelperFunctions.h@{HelperFunctions.h}}
+\doxysubsubsection{\texorpdfstring{RESET}{RESET}}
+{\footnotesize\ttfamily \label{_helper_functions_8h_a9a31596d4859c8ad599295239748e3dc} 
+const string RESET = "{}\textbackslash{}033\+[0m"{}}
+
+
+
+ANSI color code to reset terminal output to default. 
+
+\Hypertarget{_helper_functions_8h_a1f7a26bd4f473d811093b8b0be1ca753}\index{HelperFunctions.h@{HelperFunctions.h}!YELLOW@{YELLOW}}
+\index{YELLOW@{YELLOW}!HelperFunctions.h@{HelperFunctions.h}}
+\doxysubsubsection{\texorpdfstring{YELLOW}{YELLOW}}
+{\footnotesize\ttfamily \label{_helper_functions_8h_a1f7a26bd4f473d811093b8b0be1ca753} 
+const string YELLOW = "{}\textbackslash{}033\+[33m"{}}
+
+
+
+ANSI color code for yellow text (used for scaling up). 
+

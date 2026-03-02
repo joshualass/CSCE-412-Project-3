@@ -1,0 +1,32 @@
+\doxysection{Request.\+h}
+\hypertarget{_request_8h_source}{}\label{_request_8h_source}\doxymbox{\hyperlink{_request_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#ifndef\ \_REQUEST\_H\_}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#define\ \_REQUEST\_H\_}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00010\ \textcolor{keyword}{using\ namespace\ }std;}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00018\ \textcolor{keyword}{struct\ }\doxymbox{\hyperlink{struct_request_a19aba34d23b6c16e3e603e140fd3fce1}{Request}}\ \{}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keywordtype}{string}\ \doxymbox{\hyperlink{struct_request_a9928e13d4c7b1b092fdc147752634ac3}{IP\_in}};}
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keywordtype}{string}\ \doxymbox{\hyperlink{struct_request_ac6252b68f9b53fc09d29db7793fb9609}{IP\_out}};}
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keywordtype}{int}\ \doxymbox{\hyperlink{struct_request_afa69e823162ae1448d04748b30d71bac}{time\_to\_complete}};}
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keywordtype}{int}\ \doxymbox{\hyperlink{struct_request_a973d17e2b9dcb240f408795efa068633}{time\_received}};}
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keywordtype}{char}\ \doxymbox{\hyperlink{struct_request_a3bd4fe5482cd4ed6b21bfe7c28462041}{type}};}
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keywordtype}{bool}\ \doxymbox{\hyperlink{struct_request_ac1f176efcab5c3330dcb669580be0b98}{complete}};}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keywordtype}{int}\ \doxymbox{\hyperlink{struct_request_a2bafc9ab26ca16a2d6e139752d01007b}{time\_started\_processing}};}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00045\ \ \ \ \ \doxymbox{\hyperlink{struct_request_a19aba34d23b6c16e3e603e140fd3fce1}{Request}}(\textcolor{keywordtype}{string}\ \doxymbox{\hyperlink{struct_request_a9928e13d4c7b1b092fdc147752634ac3}{IP\_in}},\ \textcolor{keywordtype}{string}\ \doxymbox{\hyperlink{struct_request_ac6252b68f9b53fc09d29db7793fb9609}{IP\_out}},\ \textcolor{keywordtype}{int}\ \doxymbox{\hyperlink{struct_request_afa69e823162ae1448d04748b30d71bac}{time\_to\_complete}},\ \textcolor{keywordtype}{int}\ \doxymbox{\hyperlink{struct_request_a973d17e2b9dcb240f408795efa068633}{time\_received}},\ \textcolor{keywordtype}{char}\ \doxymbox{\hyperlink{struct_request_a3bd4fe5482cd4ed6b21bfe7c28462041}{type}},\ \textcolor{keywordtype}{bool}\ \doxymbox{\hyperlink{struct_request_ac1f176efcab5c3330dcb669580be0b98}{complete}});}
+\DoxyCodeLine{00046\ \ \ \ \ }
+\DoxyCodeLine{00050\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{struct_request_a42ec4e16073fe3413394f02c0176ce8d}{completeRequest}}();}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00058\ \ \ \ \ \textcolor{keyword}{friend}\ ostream\&\ \doxymbox{\hyperlink{struct_request_ad082baa951294ef794b4ee7ee9771c10}{operator<<}}(ostream\&\ os,\ \textcolor{keyword}{const}\ \doxymbox{\hyperlink{struct_request_a19aba34d23b6c16e3e603e140fd3fce1}{Request}}\&\ req);}
+\DoxyCodeLine{00059\ \};}
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00061\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

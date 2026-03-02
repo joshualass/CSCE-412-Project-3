@@ -1,0 +1,201 @@
+\doxysection{Request Struct Reference}
+\hypertarget{struct_request}{}\label{struct_request}\index{Request@{Request}}
+
+
+Represents a single network request to be processed by a \doxylink{struct_webserver}{Webserver}.  
+
+
+
+
+{\ttfamily \+\#include $<$Request.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{struct_request_a19aba34d23b6c16e3e603e140fd3fce1}{Request}} (string \doxymbox{\hyperlink{struct_request_a9928e13d4c7b1b092fdc147752634ac3}{IP\+\_\+in}}, string \doxymbox{\hyperlink{struct_request_ac6252b68f9b53fc09d29db7793fb9609}{IP\+\_\+out}}, int \doxymbox{\hyperlink{struct_request_afa69e823162ae1448d04748b30d71bac}{time\+\_\+to\+\_\+complete}}, int \doxymbox{\hyperlink{struct_request_a973d17e2b9dcb240f408795efa068633}{time\+\_\+received}}, char \doxymbox{\hyperlink{struct_request_a3bd4fe5482cd4ed6b21bfe7c28462041}{type}}, bool \doxymbox{\hyperlink{struct_request_ac1f176efcab5c3330dcb669580be0b98}{complete}})
+\begin{DoxyCompactList}\small\item\em Constructs a new \doxylink{struct_request}{Request} object. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{struct_request_a42ec4e16073fe3413394f02c0176ce8d}{complete\+Request}} ()
+\begin{DoxyCompactList}\small\item\em Marks the request as fully processed. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+string \doxymbox{\hyperlink{struct_request_a9928e13d4c7b1b092fdc147752634ac3}{IP\+\_\+in}}
+\begin{DoxyCompactList}\small\item\em The origin IP address of the request. \end{DoxyCompactList}\item 
+string \doxymbox{\hyperlink{struct_request_ac6252b68f9b53fc09d29db7793fb9609}{IP\+\_\+out}}
+\begin{DoxyCompactList}\small\item\em The destination IP address of the request. \end{DoxyCompactList}\item 
+int \doxymbox{\hyperlink{struct_request_afa69e823162ae1448d04748b30d71bac}{time\+\_\+to\+\_\+complete}}
+\begin{DoxyCompactList}\small\item\em Number of clock cycles required to process this request. \end{DoxyCompactList}\item 
+int \doxymbox{\hyperlink{struct_request_a973d17e2b9dcb240f408795efa068633}{time\+\_\+received}}
+\begin{DoxyCompactList}\small\item\em The clock cycle during which this request was generated. \end{DoxyCompactList}\item 
+char \doxymbox{\hyperlink{struct_request_a3bd4fe5482cd4ed6b21bfe7c28462041}{type}}
+\begin{DoxyCompactList}\small\item\em Character representing the request type (\textquotesingle{}P\textquotesingle{}, \textquotesingle{}S\textquotesingle{}, etc.). \end{DoxyCompactList}\item 
+bool \doxymbox{\hyperlink{struct_request_ac1f176efcab5c3330dcb669580be0b98}{complete}}
+\begin{DoxyCompactList}\small\item\em Boolean flag indicating if the request has finished processing. \end{DoxyCompactList}\item 
+int \doxymbox{\hyperlink{struct_request_a2bafc9ab26ca16a2d6e139752d01007b}{time\+\_\+started\+\_\+processing}}
+\begin{DoxyCompactList}\small\item\em The exact clock cycle when the request was pulled from the queue and assigned to a server. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+ostream \& \doxymbox{\hyperlink{struct_request_ad082baa951294ef794b4ee7ee9771c10}{operator$<$$<$}} (ostream \&os, const \doxymbox{\hyperlink{struct_request}{Request}} \&req)
+\begin{DoxyCompactList}\small\item\em Overloads the stream insertion operator for easy printing. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Represents a single network request to be processed by a \doxylink{struct_webserver}{Webserver}. 
+
+
+\begin{DoxyItemize}
+\item Contains metadata about the request including its origin IP, destination IP, required processing time, arrival time, and completion status. 
+\end{DoxyItemize}
+
+\label{doc-constructors}
+\Hypertarget{struct_request_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{struct_request_a19aba34d23b6c16e3e603e140fd3fce1}\index{Request@{Request}!Request@{Request}}
+\index{Request@{Request}!Request@{Request}}
+\doxysubsubsection{\texorpdfstring{Request()}{Request()}}
+{\footnotesize\ttfamily \label{struct_request_a19aba34d23b6c16e3e603e140fd3fce1} 
+Request::\+\+Request (\begin{DoxyParamCaption}\item[{string}]{IP\+\_\+in}{, }\item[{string}]{IP\+\_\+out}{, }\item[{int}]{time\+\_\+to\+\_\+complete}{, }\item[{int}]{time\+\_\+received}{, }\item[{char}]{type}{, }\item[{bool}]{complete}{}\end{DoxyParamCaption})}
+
+
+
+Constructs a new \doxylink{struct_request}{Request} object. 
+
+Initializes a \doxylink{struct_request}{Request} with the given parameters.
+
+
+\begin{DoxyParams}{Parameters}
+{\em \doxylink{struct_request_a9928e13d4c7b1b092fdc147752634ac3}{IP\+\_\+in}} & Origin IP address. \\
+\hline
+{\em \doxylink{struct_request_ac6252b68f9b53fc09d29db7793fb9609}{IP\+\_\+out}} & Destination IP address. \\
+\hline
+{\em \doxylink{struct_request_afa69e823162ae1448d04748b30d71bac}{time\+\_\+to\+\_\+complete}} & Clock cycles needed to finish the job. \\
+\hline
+{\em \doxylink{struct_request_a973d17e2b9dcb240f408795efa068633}{time\+\_\+received}} & The cycle when this request enters the simulation. \\
+\hline
+{\em \doxylink{struct_request_a3bd4fe5482cd4ed6b21bfe7c28462041}{type}} & The classification type of the request. \\
+\hline
+{\em \doxylink{struct_request_ac1f176efcab5c3330dcb669580be0b98}{complete}} & Initial completion status (usually false). \\
+\hline
+\end{DoxyParams}
+
+
+\label{doc-func-members}
+\Hypertarget{struct_request_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{struct_request_a42ec4e16073fe3413394f02c0176ce8d}\index{Request@{Request}!completeRequest@{completeRequest}}
+\index{completeRequest@{completeRequest}!Request@{Request}}
+\doxysubsubsection{\texorpdfstring{completeRequest()}{completeRequest()}}
+{\footnotesize\ttfamily \label{struct_request_a42ec4e16073fe3413394f02c0176ce8d} 
+void Request::\+complete\+Request (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Marks the request as fully processed. 
+
+Updates the internal state of the request to indicate completion. 
+
+\label{doc-related-members}
+\Hypertarget{struct_request_doc-related-members}
+\doxysubsection{Friends And Related Symbol Documentation}
+\Hypertarget{struct_request_ad082baa951294ef794b4ee7ee9771c10}\index{Request@{Request}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!Request@{Request}}
+\doxysubsubsection{\texorpdfstring{operator$<$$<$}{operator<<}}
+{\footnotesize\ttfamily \label{struct_request_ad082baa951294ef794b4ee7ee9771c10} 
+ostream \& operator$<$$<$ (\begin{DoxyParamCaption}\item[{ostream \&}]{os}{, }\item[{const \doxymbox{\hyperlink{struct_request}{Request}} \&}]{req}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+Overloads the stream insertion operator for easy printing. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em os} & The output stream. \\
+\hline
+{\em req} & The \doxylink{struct_request}{Request} to format and print. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+ostream\& The modified output stream. 
+\end{DoxyReturn}
+
+
+\label{doc-variable-members}
+\Hypertarget{struct_request_doc-variable-members}
+\doxysubsection{Member Data Documentation}
+\Hypertarget{struct_request_ac1f176efcab5c3330dcb669580be0b98}\index{Request@{Request}!complete@{complete}}
+\index{complete@{complete}!Request@{Request}}
+\doxysubsubsection{\texorpdfstring{complete}{complete}}
+{\footnotesize\ttfamily \label{struct_request_ac1f176efcab5c3330dcb669580be0b98} 
+bool Request::\+complete}
+
+
+
+Boolean flag indicating if the request has finished processing. 
+
+\Hypertarget{struct_request_a9928e13d4c7b1b092fdc147752634ac3}\index{Request@{Request}!IP\_in@{IP\_in}}
+\index{IP\_in@{IP\_in}!Request@{Request}}
+\doxysubsubsection{\texorpdfstring{IP\_in}{IP\_in}}
+{\footnotesize\ttfamily \label{struct_request_a9928e13d4c7b1b092fdc147752634ac3} 
+string Request::\+\+IP\+\_\+in}
+
+
+
+The origin IP address of the request. 
+
+\Hypertarget{struct_request_ac6252b68f9b53fc09d29db7793fb9609}\index{Request@{Request}!IP\_out@{IP\_out}}
+\index{IP\_out@{IP\_out}!Request@{Request}}
+\doxysubsubsection{\texorpdfstring{IP\_out}{IP\_out}}
+{\footnotesize\ttfamily \label{struct_request_ac6252b68f9b53fc09d29db7793fb9609} 
+string Request::\+\+IP\+\_\+out}
+
+
+
+The destination IP address of the request. 
+
+\Hypertarget{struct_request_a973d17e2b9dcb240f408795efa068633}\index{Request@{Request}!time\_received@{time\_received}}
+\index{time\_received@{time\_received}!Request@{Request}}
+\doxysubsubsection{\texorpdfstring{time\_received}{time\_received}}
+{\footnotesize\ttfamily \label{struct_request_a973d17e2b9dcb240f408795efa068633} 
+int Request::\+time\+\_\+received}
+
+
+
+The clock cycle during which this request was generated. 
+
+\Hypertarget{struct_request_a2bafc9ab26ca16a2d6e139752d01007b}\index{Request@{Request}!time\_started\_processing@{time\_started\_processing}}
+\index{time\_started\_processing@{time\_started\_processing}!Request@{Request}}
+\doxysubsubsection{\texorpdfstring{time\_started\_processing}{time\_started\_processing}}
+{\footnotesize\ttfamily \label{struct_request_a2bafc9ab26ca16a2d6e139752d01007b} 
+int Request::\+time\+\_\+started\+\_\+processing}
+
+
+
+The exact clock cycle when the request was pulled from the queue and assigned to a server. 
+
+\Hypertarget{struct_request_afa69e823162ae1448d04748b30d71bac}\index{Request@{Request}!time\_to\_complete@{time\_to\_complete}}
+\index{time\_to\_complete@{time\_to\_complete}!Request@{Request}}
+\doxysubsubsection{\texorpdfstring{time\_to\_complete}{time\_to\_complete}}
+{\footnotesize\ttfamily \label{struct_request_afa69e823162ae1448d04748b30d71bac} 
+int Request::\+time\+\_\+to\+\_\+complete}
+
+
+
+Number of clock cycles required to process this request. 
+
+\Hypertarget{struct_request_a3bd4fe5482cd4ed6b21bfe7c28462041}\index{Request@{Request}!type@{type}}
+\index{type@{type}!Request@{Request}}
+\doxysubsubsection{\texorpdfstring{type}{type}}
+{\footnotesize\ttfamily \label{struct_request_a3bd4fe5482cd4ed6b21bfe7c28462041} 
+char Request::\+type}
+
+
+
+Character representing the request type (\textquotesingle{}P\textquotesingle{}, \textquotesingle{}S\textquotesingle{}, etc.). 
+
+
+
+The documentation for this struct was generated from the following files:\+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{_request_8h}{Request.\+h}}\item 
+\doxymbox{\hyperlink{_request_8cpp}{Request.\+cpp}}\end{DoxyCompactItemize}
