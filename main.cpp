@@ -10,6 +10,13 @@ const int num_servers = 10;
 int total_clock_cycles, num_requests;
 int n;
 
+const string RESET = "\033[0m";
+const string RED = "\033[31m";
+const string GREEN = "\033[32m";
+const string YELLOW = "\033[33m";
+const string BLUE = "\033[34m";
+const string CYAN = "\033[36m";
+
 int main(int argc, char **argv) {
 
     if(argc < 4) {
@@ -52,9 +59,9 @@ int main(int argc, char **argv) {
     }
 
     for(int time = 0; time < total_clock_cycles; time++) {
-        cout << "start of cycle: " << time << endl;
+        cout << "Start of cycle " << time << endl;
         for(auto request : requests_at_time[time]) {
-            cout << "queue request: " << (*request) << endl;
+            cout << "Queuing Request : " << (*request) << endl;
             s.queueRequest(request);
         }
         s.simulateClockCycle();

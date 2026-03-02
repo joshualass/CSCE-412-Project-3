@@ -1,4 +1,5 @@
 #include "Request.h"
+#include <iostream>
 using namespace std;
 
 Request::Request(string IP_in, string IP_out, int time_to_complete, int time_received, char type, bool complete) : 
@@ -10,7 +11,15 @@ Request::Request(string IP_in, string IP_out, int time_to_complete, int time_rec
     complete(complete)
 {}
 
-void Request::completeRequest(Webserver& webserver) {
+void Request::completeRequest() {
     complete = true;
-    // TODO add logging to show that this request was complete. 
+}
+
+ostream& operator<<(ostream& os, const Request& req) {
+    os << "Request [IP In: " << req.IP_in 
+       << " | IP Out: " << req.IP_out 
+       << " | Type: " << req.type 
+       << " | Request Time: " << req.time_to_complete 
+       << " | Status: " << (req.complete ? "Complete" : "Pending") << "]";
+    return os;
 }

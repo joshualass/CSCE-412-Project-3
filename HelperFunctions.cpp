@@ -18,5 +18,5 @@ string generateWebserverIP() {
 }
 
 Request* generateRequest(char type) {
-    return new Request(generateRandomIP(), generateRandomIP(), 20 + rand() % 40, rand() % total_clock_cycles, type, false);
+    return new Request(generateRandomIP(), generateRandomIP(), 10 + rand() % 20, rand() % total_clock_cycles, type, false);
 }

@@ -3,6 +3,7 @@
 #include "Request.h"
 #include "HelperFunctions.h"
 #include <vector>
+#include <iostream> 
 
 using namespace std;
 extern int n;
@@ -21,6 +22,7 @@ void LoadBalancer::addRequest(Request* request) {
 }
 
 void LoadBalancer::simulateClockCycle() {
+
     if(check_countdown) {
         check_countdown--;
     } else {
@@ -28,15 +30,17 @@ void LoadBalancer::simulateClockCycle() {
             //when we reach this branch, we need to deactivate a server as we have too many
             for(auto &webserver : webservers) {
                 if(webserver.active) {
+                    cout << "[SCALE DOWN] Webserver " << webserver.IP_address << " has been deactivated." << endl;
                     webserver.deactivate();
                     break;
                 }
             }
             check_countdown = n;
-        } else if(request_queue.size() > active_server_count * 80) {
+        } else if(request_queue.size() + 79 > active_server_count * 80) {
             //when we reach this branch, we need to activate a server as the queue is much larger than the active server count
             for(auto &webserver : webservers) {
                 if(!webserver.active) {
+                    cout << "[SCALE UP] Webserver " << webserver.IP_address << " has been activated." << endl;
                     webserver.activate();
                     break;
                 }
@@ -49,6 +53,7 @@ void LoadBalancer::simulateClockCycle() {
     for(auto &webserver : webservers) {
         //give this server a request if possible
         if(webserver.current_request == nullptr && webserver.active && !request_queue.empty()) {
+            cout << "Webserver " << webserver.IP_address << " has been assigned this request: " << *(request_queue.front()) << endl;
             webserver.processRequest(request_queue.front());
             request_queue.pop();
         }

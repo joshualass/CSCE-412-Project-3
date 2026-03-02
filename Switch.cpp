@@ -2,9 +2,10 @@
 #include "Request.h"
 #include "LoadBalancer.h"
 #include <vector>
+#include <iostream>
 using namespace std;
 
-Switch::Switch(vector<char> types, int servers_per_loadbalancer) {
+Switch::Switch(vector<char> types, int servers_per_loadbalancer) : loadBalancerTypes(types) {
     for(char t : types) {
         loadBalancers.push_back(LoadBalancer(servers_per_loadbalancer, t));
     }
@@ -13,6 +14,7 @@ Switch::Switch(vector<char> types, int servers_per_loadbalancer) {
 void Switch::queueRequest(Request* request) {
     for(size_t i = 0; i < loadBalancerTypes.size(); i++) {
         if(request->type == loadBalancerTypes[i]) {
+            cout << *request << " sent to Load Balancer " << loadBalancerTypes[i] << endl;
             loadBalancers[i].addRequest(request);
         }
     }
