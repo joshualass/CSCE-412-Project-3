@@ -38,6 +38,10 @@ struct LoadBalancer {
     /** @brief Vector containing all allocated Webserver objects. */
     vector<Webserver> webservers;
 
+    /** * @brief Histogram tracking the number of clock cycles spent with exactly 'k' active servers.
+     * * The key represents the number of active servers ('k'), and the value represents 
+     * the total number of clock cycles the load balancer spent in that state.
+     */
     map<int, int> active_server_histogram;
 
     /**

@@ -22,6 +22,8 @@ extern int firewall_upper_range;
 
 extern int total_blocked_requests;
 
+extern int current_time;
+
 /**
  * @brief Initializes a LoadBalancer with a set number of Webservers.
  * * Generates initial Webservers with random IP addresses matching the 
@@ -103,8 +105,10 @@ void LoadBalancer::simulateClockCycle() {
     for(auto &webserver : webservers) {
         //give this server a request if possible
         if(webserver.current_request == nullptr && webserver.active && !request_queue.empty()) {
-            cout << BLUE << "Webserver " << webserver.IP_address << " has been assigned this request: " << *(request_queue.front()) << RESET << endl;
-            webserver.processRequest(request_queue.front());
+            Request* req = request_queue.front();
+            req->time_started_processing = current_time; 
+            cout << BLUE << "Webserver " << webserver.IP_address << " has been assigned this request: " << *req << RESET << endl;
+            webserver.processRequest(req);
             request_queue.pop();
         }
         webserver.simulateClockCycle();

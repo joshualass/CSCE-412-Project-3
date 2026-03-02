@@ -13,6 +13,14 @@ using namespace std;
 
 extern int total_completed_requests;
 
+extern int current_time;
+
+extern long long total_queue_time;
+
+extern long long total_turnaround_time;
+
+extern int total_completed_requests;
+
 /**
  * @brief Initializes an inactive Webserver with no active requests.
  */
@@ -46,11 +54,12 @@ void Webserver::simulateClockCycle() {
     if(current_request != nullptr) {
         time_left -= 1;
         if(time_left <= 0) {
-            //job is complete
+            total_queue_time += (current_request->time_started_processing - current_request->time_received);
+            total_turnaround_time += (current_time - current_request->time_received);
+            total_completed_requests++;
             cout << GREEN << "Webserver " << IP_address << " has completed this request: " << *current_request << RESET << endl;
             this->current_request->completeRequest();
             this->current_request = nullptr;
-            total_completed_requests++;
         }
     }
 }

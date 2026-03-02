@@ -30,6 +30,9 @@ struct Request {
     /** @brief Boolean flag indicating if the request has finished processing. */
     bool complete;
 
+    /** @brief The exact clock cycle when the request was pulled from the queue and assigned to a server. */
+    int time_started_processing;
+
     /**
      * @brief Constructs a new Request object.
      * @param IP_in Origin IP address.

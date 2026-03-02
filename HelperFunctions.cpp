@@ -15,6 +15,12 @@ int webserver_cnt = 0;
 /** @brief Global reference to the total number of simulated clock cycles. */
 extern int total_clock_cycles;
 
+/** @brief Global reference to the minimum allowed task time. */
+extern int min_task_time;
+
+/** @brief Global reference to the maximum allowed task time. */
+extern int max_task_time;
+
 /**
  * @brief Creates a random IP address for incoming/outgoing network requests.
  * * Uses a standard 192.168.1.x prefix and generates a random final octet 
@@ -34,15 +40,17 @@ string generateRandomIP() {
  * * @return string The formatted sequential IP address string.
  */
 string generateWebserverIP() {
-    cout << "gwbip" << endl;
     return "192.168.1." + to_string(webserver_cnt++);
 }
 
 /**
  * @brief Allocates and initializes a new Request object with random parameters.
+ * * The required processing time is calculated as a random integer between 
+ * the globally defined min_task_time and max_task_time.
  * * @param type The required server type for this request.
  * @return Request* Pointer to the dynamically allocated Request.
  */
 Request* generateRequest(char type) {
-    return new Request(generateRandomIP(), generateRandomIP(), 10 + rand() % 20, rand() % total_clock_cycles, type, false);
+    int task_time = min_task_time + (rand() % (max_task_time - min_task_time + 1));
+    return new Request(generateRandomIP(), generateRandomIP(), task_time, rand() % total_clock_cycles, type, false);
 }
