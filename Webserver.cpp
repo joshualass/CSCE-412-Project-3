@@ -2,6 +2,7 @@
 #include "Request.h"
 #include <assert.h>
 #include <iostream>
+#include "HelperFunctions.h"
 
 using namespace std;
 
@@ -24,7 +25,7 @@ void Webserver::simulateClockCycle() {
         time_left -= 1;
         if(time_left <= 0) {
             //job is complete
-            cout << "Webserver " << IP_address << " has completed this request: " << *current_request << endl;
+            cout << GREEN << "Webserver " << IP_address << " has completed this request: " << *current_request << RESET << endl;
             this->current_request->completeRequest();
             this->current_request = nullptr;
         }

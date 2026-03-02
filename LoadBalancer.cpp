@@ -6,11 +6,12 @@
 #include <iostream> 
 
 using namespace std;
-extern int n;
+extern int n, firewall_lower_range, firewall_upper_range;
 
 LoadBalancer::LoadBalancer(int num_webservers, char web_server_type) : 
     check_countdown(0),
-    active_server_count(0)
+    active_server_count(0),
+    web_server_type(web_server_type)
 {
     for(int i = 0; i < n; i++) {
         webservers.push_back(Webserver(generateWebserverIP(), web_server_type));
@@ -18,11 +19,12 @@ LoadBalancer::LoadBalancer(int num_webservers, char web_server_type) :
 }
 
 void LoadBalancer::addRequest(Request* request) {
+
     request_queue.push(request);
 }
 
 void LoadBalancer::simulateClockCycle() {
-
+    // cout << "rqs : " << request_queue.size() << " asc : " << active_server_count << endl;
     if(check_countdown) {
         check_countdown--;
     } else {
@@ -30,22 +32,24 @@ void LoadBalancer::simulateClockCycle() {
             //when we reach this branch, we need to deactivate a server as we have too many
             for(auto &webserver : webservers) {
                 if(webserver.active) {
-                    cout << "[SCALE DOWN] Webserver " << webserver.IP_address << " has been deactivated." << endl;
+                    cout << RED << "[LB Type " << web_server_type << "] [SCALE DOWN] " << "Webserver " << webserver.IP_address << " deactivated." << RESET << endl;
                     webserver.deactivate();
                     break;
                 }
             }
             check_countdown = n;
+            active_server_count--;
         } else if(request_queue.size() + 79 > active_server_count * 80) {
             //when we reach this branch, we need to activate a server as the queue is much larger than the active server count
             for(auto &webserver : webservers) {
                 if(!webserver.active) {
-                    cout << "[SCALE UP] Webserver " << webserver.IP_address << " has been activated." << endl;
+                    cout << YELLOW << "[LB Type " << web_server_type << "] [SCALE UP] " << "Webserver " << webserver.IP_address << " activated." << RESET << endl;
                     webserver.activate();
                     break;
                 }
             }
-            check_countdown = n;
+            check_countdown = n - 1;
+            active_server_count++;
         }
     }
 
@@ -53,7 +57,7 @@ void LoadBalancer::simulateClockCycle() {
     for(auto &webserver : webservers) {
         //give this server a request if possible
         if(webserver.current_request == nullptr && webserver.active && !request_queue.empty()) {
-            cout << "Webserver " << webserver.IP_address << " has been assigned this request: " << *(request_queue.front()) << endl;
+            cout << BLUE << "Webserver " << webserver.IP_address << " has been assigned this request: " << *(request_queue.front()) << RESET << endl;
             webserver.processRequest(request_queue.front());
             request_queue.pop();
         }

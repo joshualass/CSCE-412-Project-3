@@ -7,38 +7,22 @@
 using namespace std;
 
 const int num_servers = 10;
-int total_clock_cycles, num_requests;
+int total_clock_cycles, num_requests, firewall_lower_range, firewall_upper_range;
 int n;
-
-const string RESET = "\033[0m";
-const string RED = "\033[31m";
-const string GREEN = "\033[32m";
-const string YELLOW = "\033[33m";
-const string BLUE = "\033[34m";
-const string CYAN = "\033[36m";
 
 int main(int argc, char **argv) {
 
-    if(argc < 4) {
-        cout << "Usage : ./loadbalancer (total_clock_cycles) (num_requests) (n)" << endl;
+    if(argc < 6) {
+        cout << "Usage : ./loadbalancer (total_clock_cycles) (num_requests) (n) (firewall_lower_range) (firewall_upper_range)" << endl;
         return 0;
     }
-
-    if(argc >= 2) {
-        total_clock_cycles = atoi(argv[1]);
-    } else {
-        total_clock_cycles = 10000;
-    }
-
-    if(argc >= 3) {
-        num_requests = atoi(argv[2]);
-    } else {
-        num_requests = 1000;
-    }
+    
     
     total_clock_cycles = atoi(argv[1]);
     num_requests = atoi(argv[2]);
     n = atoi(argv[3]);
+    firewall_lower_range = atoi(argv[4]);
+    firewall_upper_range = atoi(argv[5]);
 
     //generate all the classes. 
     vector<char> server_types = {
@@ -59,9 +43,8 @@ int main(int argc, char **argv) {
     }
 
     for(int time = 0; time < total_clock_cycles; time++) {
-        cout << "Start of cycle " << time << endl;
+        cout << MAGENTA << "Start of cycle " << time << RESET << endl;
         for(auto request : requests_at_time[time]) {
-            cout << "Queuing Request : " << (*request) << endl;
             s.queueRequest(request);
         }
         s.simulateClockCycle();
